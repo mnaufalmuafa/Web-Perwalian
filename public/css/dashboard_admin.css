@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1, h2, p {
+    font-family: 'Roboto';
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-left: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#firstSection {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin-top: 30px;
+}
+
+#firstSection article {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#firstSection article main {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 0px 10px;
+}
+
+#firstSection article main div h3:first-child {
+    margin-bottom: 10px;
+}
+
+#firstSection article main div h3:nth-child(2) {
+    margin-top: 0px;
+}
+
+#firstSection article footer {
+    /* color: white; */
+    text-align: center;
+    padding: 2px 0px;
+    font-size: 0.8rem;
+    border-top: 2px solid black;
+}
+
+#firstSection article footer:hover {
+    cursor: pointer;
+}
+
+#firstSection img {
+    width: 100px;
+    margin-left: 100px;
+}
+
+/* #firstSection article:first-child main {
+    background-color: red;
+}
+
+#firstSection article:first-child footer {
+    background-color: #960303;
+}
+
+#firstSection article:nth-child(2) main {
+    background-color: #00FF85;
+}
+
+#firstSection article:nth-child(2) footer {
+    background-color: #005C30;
+}
+
+#firstSection article:nth-child(3) main {
+    background-color: #0029FF;
+}
+
+#firstSection article:nth-child(3) footer {
+    background-color: #001271;
+} */
