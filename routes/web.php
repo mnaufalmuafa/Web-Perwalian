@@ -25,6 +25,7 @@ Route::get('/login_admin', [AdminController::class, 'login']);
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
 Route::get('/admin/dashboard/dosen', [AdminController::class, 'dosen']);
 Route::get('/admin/dashboard/dosen/input', [AdminController::class, 'storeDosen']);
+Route::get('/admin/dashboard/dosen/edit', [AdminController::class, 'editDosen']);
 
 
 // api

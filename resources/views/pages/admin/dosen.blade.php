@@ -33,7 +33,7 @@
                     <td>ABC</td>
                     <td>IF-45-09<br>IF-43-09</td>
                     <td>
-                        <button>Edit</button>
+                        <button class="btnEdit">Edit</button>
                         <button>Hapus</button>
                     </td>
                 </tr>

@@ -32,6 +32,12 @@ class AdminController extends Controller
         return view('pages.admin.input_dosen');
     }
 
+    public function editDosen(Request $request)
+    {
+        return view('pages.admin.edit_dosen');
+    }
+
+
     // API
     public function getAllAdmin()
     {
