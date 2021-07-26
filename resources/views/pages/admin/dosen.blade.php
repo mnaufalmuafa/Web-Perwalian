@@ -18,7 +18,7 @@
     <main id="body-main-content">
         <section id="firstSection">
             <h2>Data Dosen</h2>
-            <button>Tambah Dosen</button>
+            <a href="/admin/dashboard/dosen/input"><button>Tambah Dosen</button></a>
         </section>
         <section>
             <table>
@@ -42,7 +42,7 @@
                     <td>ABC</td>
                     <td>IF-45-09</td>
                     <td>
-                        <button>Edit</button>
+                        <button class="btnEdit">Edit</button>
                         <button>Hapus</button>
                     </td>
                 </tr>
@@ -51,7 +51,7 @@
                     <td>ABC</td>
                     <td>IF-45-09<br>IF-43-09</td>
                     <td>
-                        <button>Edit</button>
+                        <button class="btnEdit">Edit</button>
                         <button>Hapus</button>
                     </td>
                 </tr>
@@ -60,7 +60,7 @@
                     <td>ABC</td>
                     <td>IF-45-09</td>
                     <td>
-                        <button>Edit</button>
+                        <button class="btnEdit">Edit</button>
                         <button>Hapus</button>
                     </td>
                 </tr>

@@ -17,7 +17,7 @@ h2 {
     margin: 0px;
 }
 
-a {
+header a {
     text-decoration: none;
     color: black;
 }
@@ -29,6 +29,10 @@ section {
 #firstSection {
     display: flex;
     justify-content: space-between;
+}
+
+#firstSection a button {
+    padding: 5px 5px;
 }
 
 button {
@@ -48,7 +52,6 @@ button:hover {
 
 table {
     width: 100%;
-    /* border-collapse: collapse; */
 }
 
 th {
