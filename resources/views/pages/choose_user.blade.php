@@ -21,15 +21,20 @@
                 <h2>Siapa yang menggunakan web?</h2>
             </header>
             <main id="article-main-content">
-                <figure>
-                    <img src="{{ url('image/icon/lecturer.jpeg') }}" >
-                    <figcaption>Dosen</figcaption>
-                </figure>
-                <figure>
-                    <img src="{{ url('image/icon/admin.jpeg') }}" >
-                    <figcaption>Admin</figcaption>
-                </figure>
+                <a href="#">
+                    <figure>
+                        <img src="{{ url('image/icon/lecturer.jpeg') }}" >
+                        <figcaption>Dosen</figcaption>
+                    </figure>
+                </a>
+                <a href="/login_admin">
+                    <figure id="adminFigure">
+                        <img src="{{ url('image/icon/admin.jpeg') }}" >
+                        <figcaption>Admin</figcaption>
+                    </figure>
+                </a>
             </main>
         </article>
     </main>
+    <script type="text/javascript" src="{{ url('javascript/choose_user.js') }}"></script>
 </html>
