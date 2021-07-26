@@ -51,5 +51,5 @@
             </article>
         </section>
     </main>
-    <script type="text/javascript" src="{{ url('javascript/admin/dashboard_admin.js') }}"></script>
+    <script type="text/javascript" src="{{ url('javascript/pages/admin/dashboard_admin.js') }}"></script>
 </html>

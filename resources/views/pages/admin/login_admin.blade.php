@@ -34,5 +34,5 @@
             </main>
         </article>
     </main>
-    <script type="text/javascript" src="{{ url('javascript/admin/login_admin.js') }}"></script>
+    <script type="text/javascript" src="{{ url('javascript/pages/admin/login_admin.js') }}"></script>
 </html>

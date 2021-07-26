@@ -24,5 +24,5 @@
             <input type="submit" value="Submit">
         </form>
     </main>
-    <script type="text/javascript" src="{{ url('/javascript/admin/edit_dosen.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/javascript/pages/admin/edit_dosen.js') }}"></script>
 </html>

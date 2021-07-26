@@ -70,5 +70,5 @@
             <p>Belum ada data dosen</p>
         </section>
     </main>
-    <script type="text/javascript" src="{{ url('/javascript/admin/dosen.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/javascript/pages/admin/dosen.js') }}"></script>
 </html>
