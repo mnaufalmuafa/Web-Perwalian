@@ -17,6 +17,11 @@ class AdminController extends Controller
         return view('pages.admin.dashboard_admin');
     }
 
+    public function dashboard(Request $request)
+    {
+        return view('pages.admin.dashboard_admin');
+    }
+
     // API
     public function getAllAdmin()
     {

@@ -13,6 +13,7 @@ form.addEventListener("submit", function(event) {
 function afterSubmit(isSuccess) {
     if (isSuccess) {
         warnInfo.classList.add("hidden-small");
+        window.location.href = "/admin/dashboard";
     }
     else {
         warnInfo.classList.remove("hidden-small");
