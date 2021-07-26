@@ -52,3 +52,12 @@ input[type=submit] {
     border-radius: 4px;
     cursor: pointer;
 }
+
+header h1:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

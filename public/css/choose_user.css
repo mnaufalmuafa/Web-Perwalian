@@ -47,3 +47,7 @@ a {
 a:link, a:visited, a:hover, a:active {
     color: black;
 }
+
+header h1:hover {
+    cursor: pointer;
+}

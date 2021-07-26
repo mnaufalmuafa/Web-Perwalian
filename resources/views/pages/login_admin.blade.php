@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <h1>Web Berita Acara Perwalian</h1>
+        <a href="/"><h1>Web Berita Acara Perwalian</h1></a>
         <hr>
     </header>
     <main id="body-main-content">
