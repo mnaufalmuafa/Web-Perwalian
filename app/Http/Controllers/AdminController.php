@@ -22,6 +22,11 @@ class AdminController extends Controller
         return view('pages.admin.dashboard_admin');
     }
 
+    public function dosen(Request $request)
+    {
+        return view('pages.admin.dosen');
+    }
+
     // API
     public function getAllAdmin()
     {

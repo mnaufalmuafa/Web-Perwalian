@@ -1,0 +1,67 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1, h2, p {
+    font-family: 'Roboto';
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-left: 20px;
+}
+
+h2 {
+    text-align: start;
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+section {
+    padding: 10px 10px 0px 10px;
+}
+
+#firstSection {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    background-color: #1F4B7A;
+    border: none;
+    color: white;
+    padding: 0px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    /* border-collapse: collapse; */
+}
+
+th {
+    background-color: #1F4B7A;
+    color: white;
+    font-weight: 300;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#sectionNoDataInfo p {
+    margin: 0px;
+    text-align: center;
+}

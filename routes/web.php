@@ -23,7 +23,7 @@ Route::get('/', function()
 Route::get('/choose_user', [ChooseUserController::class, 'index']);
 Route::get('/login_admin', [AdminController::class, 'login']);
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
-// Route::get('/');
+Route::get('/admin/dashboard/dosen', [AdminController::class, 'dosen']);
 
 
 // api

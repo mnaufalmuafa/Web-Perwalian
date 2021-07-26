@@ -25,7 +25,7 @@
                     </div>
                     <img src="/image/icon/png/teacher.png" alt="Dosen">
                 </main>
-                <footer>Lebih Lanjut</footer>
+                <footer id="footerLecturer">Lebih Lanjut</footer>
             </article>
 
             <article>
@@ -51,4 +51,5 @@
             </article>
         </section>
     </main>
+    <script type="text/javascript" src="{{ url('javascript/admin/dashboard_admin.js') }}"></script>
 </html>
