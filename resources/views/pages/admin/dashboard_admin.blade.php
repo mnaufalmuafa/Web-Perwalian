@@ -31,23 +31,23 @@
             <article>
                 <main>
                     <div>
-                        <h3>22</h3>
-                        <h3>Mahasiswa</h3>
-                    </div>
-                    <img src="/image/icon/png/student.png" alt="Mahasiswa">
-                </main>
-                <footer id="footerStudent">Lebih Lanjut</footer>
-            </article>
-
-            <article>
-                <main>
-                    <div>
                         <h3>33</h3>
                         <h3>Kelas</h3>
                     </div>
                     <img src="/image/icon/png/class.png" alt="Kelas">
                 </main>
                 <footer id="footerClass">Lebih Lanjut</footer>
+            </article>
+
+            <article>
+                <main>
+                    <div>
+                        <h3>22</h3>
+                        <h3>Mahasiswa</h3>
+                    </div>
+                    <img src="/image/icon/png/student.png" alt="Mahasiswa">
+                </main>
+                <footer id="footerStudent">Lebih Lanjut</footer>
             </article>
         </section>
     </main>
