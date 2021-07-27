@@ -21,7 +21,7 @@
             <a href="/admin/dashboard/dosen/input"><button>Tambah Dosen</button></a>
         </section>
         <section>
-            <table>
+            <table cellspacing="0">
                 <tr>
                     <th>No</th>
                     <th>Kode Dosen</th>
