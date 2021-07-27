@@ -18,7 +18,7 @@
     <main id="body-main-content">
         <section id="classHeadingSection" class="headingSection">
             <h2>Data Mahasiswa</h2>
-            <a href="/admin/dashboard/kelas/input"><button>Tambah Mahasiswa</button></a>
+            <a href="/admin/dashboard/mahasiswa/input"><button>Tambah Mahasiswa</button></a>
         </section>
 
         <section id="classDaataSection">
@@ -70,5 +70,5 @@
         <section id="sectionNoDataClassInfo" class="noDataSection">
             <p>Belum ada data mahasiswa</p>
     </main>
-    <script type="text/javascript" src="{{ url('/javascript/pages/admin/kelas.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ url('/javascript/pages/admin/kelas.js') }}"></script> -->
 </html>
