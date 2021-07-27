@@ -47,7 +47,7 @@
                     </div>
                     <img src="/image/icon/png/class.png" alt="Kelas">
                 </main>
-                <footer>Lebih Lanjut</footer>
+                <footer id="footerClass">Lebih Lanjut</footer>
             </article>
         </section>
     </main>
