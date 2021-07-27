@@ -36,7 +36,7 @@
                     </div>
                     <img src="/image/icon/png/student.png" alt="Mahasiswa">
                 </main>
-                <footer>Lebih Lanjut</footer>
+                <footer id="footerStudent">Lebih Lanjut</footer>
             </article>
 
             <article>
