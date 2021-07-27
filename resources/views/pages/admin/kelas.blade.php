@@ -18,7 +18,7 @@
     <main id="body-main-content">
         <section id="classHeadingSection" class="headingSection">
             <h2>Data Kelas</h2>
-            <a href="/admin/dashboard/dosen/input"><button>Tambah Kelas</button></a>
+            <a href="/admin/dashboard/kelas/input"><button>Tambah Kelas</button></a>
         </section>
 
         <section id="classDaataSection">
