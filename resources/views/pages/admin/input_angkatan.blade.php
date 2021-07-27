@@ -18,7 +18,7 @@
     <main id="body-main-content">
         <h2>Input Angkatan</h2>
         <form>
-            <label for="inputLecturerCode">Kode Dosen</label>
+            <label for="inputLecturerCode">Tahun Angkatan</label>
             <br>
             <input type="number" name="generation" id="inputGeneration" max="9999">
             <input type="submit" value="Submit">
