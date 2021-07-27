@@ -1,0 +1,52 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1, h2, p {
+    font-family: 'Roboto';
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-left: 20px;
+}
+
+h2 {
+    text-align: start;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+main {
+    padding: 10px 20px 0px 20px;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input[type=text] {
+    /* margin-top: 10px; */
+    width: 100%;
+}
+
+input[type=submit] {
+    float: right;
+    margin-top: 10px;
+
+    background-color: #1F4B7A;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+}
