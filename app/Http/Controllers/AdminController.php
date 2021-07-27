@@ -62,6 +62,11 @@ class AdminController extends Controller
         return view('pages.admin.input_mahasiswa');
     }
 
+    public function editMahasiswa(Request $request)
+    {
+        return view('pages.admin.edit_mahasiswa');
+    }
+
     // API
     public function getAllAdmin()
     {

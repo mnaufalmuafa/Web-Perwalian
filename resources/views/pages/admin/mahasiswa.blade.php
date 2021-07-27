@@ -70,5 +70,5 @@
         <section id="sectionNoDataClassInfo" class="noDataSection">
             <p>Belum ada data mahasiswa</p>
     </main>
-    <!-- <script type="text/javascript" src="{{ url('/javascript/pages/admin/kelas.js') }}"></script> -->
+    <script type="text/javascript" src="{{ url('/javascript/pages/admin/mahasiswa.js') }}"></script>
 </html>
