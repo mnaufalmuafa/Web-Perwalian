@@ -42,12 +42,6 @@ class AdminController extends Controller
         return view('pages.admin.kelas');
     }
 
-    public function storeAngkatan(Request $request)
-    {
-        return view('pages.admin.input_angkatan');
-    }
-
-
     // API
     public function getAllAdmin()
     {

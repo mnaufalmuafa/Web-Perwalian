@@ -45,50 +45,6 @@
 
         <section id="sectionNoDataClassInfo" class="noDataSection">
             <p>Belum ada data kelas</p>
-        </section>
-
-        <section id="classHeadingSection" class="headingSection">
-            <h2>Data Angkatan</h2>
-            <a href="/admin/dashboard/angkatan/input"><button>Tambah Angkatan</button></a>
-        </section>
-
-        <section>
-            <table cellspacing="0">
-                <tr>
-                    <th>No</th>
-                    <th>Tahun Angkatan</th>
-                    <th>Aksi</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>2018</td>
-                    <td>
-                        <button class="btnEdit">Edit</button>
-                        <button>Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>2019</td>
-                    <td>
-                        <button class="btnEdit">Edit</button>
-                        <button>Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>2020</td>
-                    <td>
-                        <button class="btnEdit">Edit</button>
-                        <button>Hapus</button>
-                    </td>
-                </tr>
-            </table>
-        </section>
-
-        <section id="sectionNoDataGenerationInfo" class="noDataSection">
-            <p>Belum ada data angkatan</p>
-        </section>
     </main>
     <!-- <script type="text/javascript" src="{{ url('/javascript/pages/admin/dosen.js') }}"></script> -->
 </html>
