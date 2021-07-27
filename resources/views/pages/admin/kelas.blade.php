@@ -49,7 +49,7 @@
 
         <section id="classHeadingSection" class="headingSection">
             <h2>Data Angkatan</h2>
-            <a href="/admin/dashboard/dosen/input"><button>Tambah Angkatan</button></a>
+            <a href="/admin/dashboard/angkatan/input"><button>Tambah Angkatan</button></a>
         </section>
 
         <section>
