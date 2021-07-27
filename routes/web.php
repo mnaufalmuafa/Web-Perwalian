@@ -28,6 +28,7 @@ Route::get('/admin/dashboard/dosen/input', [AdminController::class, 'storeDosen'
 Route::get('/admin/dashboard/dosen/edit', [AdminController::class, 'editDosen']);
 Route::get('/admin/dashboard/kelas', [AdminController::class, 'kelas']);
 Route::get('/admin/dashboard/kelas/input', [AdminController::class, 'storeKelas']);
+Route::get('/admin/dashboard/kelas/edit', [AdminController::class, 'editKelas']);
 
 
 // api

@@ -47,6 +47,11 @@ class AdminController extends Controller
         return view('pages.admin.input_kelas');
     }
 
+    public function editKelas(Request $request)
+    {
+        return view('pages.admin.edit_kelas');
+    }
+
     // API
     public function getAllAdmin()
     {

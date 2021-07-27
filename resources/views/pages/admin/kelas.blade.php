@@ -40,11 +40,31 @@
                         <button>Hapus</button>
                     </td>
                 </tr>
+                <tr>
+                    <td>2</td>
+                    <td>IF-45-09</td>
+                    <td>2018</td>
+                    <td>ABC</td>
+                    <td>
+                        <button class="btnEdit">Edit</button>
+                        <button>Hapus</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>IF-45-09</td>
+                    <td>2018</td>
+                    <td>ABC</td>
+                    <td>
+                        <button class="btnEdit">Edit</button>
+                        <button>Hapus</button>
+                    </td>
+                </tr>
             </table>
         </section>
 
         <section id="sectionNoDataClassInfo" class="noDataSection">
             <p>Belum ada data kelas</p>
     </main>
-    <!-- <script type="text/javascript" src="{{ url('/javascript/pages/admin/dosen.js') }}"></script> -->
+    <script type="text/javascript" src="{{ url('/javascript/pages/admin/kelas.js') }}"></script>
 </html>
