@@ -37,6 +37,7 @@ Route::get('/admin/dashboard/mahasiswa/update', [AdminController::class, 'update
 // api
 Route::prefix('get')->group(function () {
     Route::get('/get_all_admin', [App\Http\Controllers\ApiAdminController::class, 'getAllAdmin']);
+    Route::get('/get_all_dosen', [App\Http\Controllers\ApiDosenController::class, 'getAllDosen']);
     Route::get('/dosen_count', [App\Http\Controllers\ApiDosenController::class, 'getDosenCount']);
     Route::get('/kelas_count', [App\Http\Controllers\ApiKelasController::class, 'getKelasCount']);
     Route::get('/mahasiswa_count', [App\Http\Controllers\ApiMahasiswaController::class, 'getMahasiswaCount']);

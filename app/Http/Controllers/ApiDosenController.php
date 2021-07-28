@@ -11,4 +11,9 @@ class ApiDosenController extends Controller
     {
         return Dosen::count();
     }
+
+    public function getAllDosen()
+    {
+        return Dosen::get();
+    }
 }
