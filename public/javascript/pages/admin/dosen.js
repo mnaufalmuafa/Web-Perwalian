@@ -25,6 +25,10 @@ var dosenPage = new Vue({
                 // Handle page restore.
                 window.location.reload();
             }
+        },
+        redirectToEditPage : function(id) {
+            this.dataDosen = null;
+            window.location.href = "/admin/dashboard/dosen/update?id="+id;
         }
     }
 });

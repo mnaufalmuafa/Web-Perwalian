@@ -30,7 +30,7 @@
                         <td>@{{ d.lecturer_code }}</td>
                         <td>-</td>
                         <td>
-                            <button class="btnEdit">Edit</button>
+                            <button @click="redirectToEditPage(d.id)">Edit</button>
                             <button>Hapus</button>
                         </td>
                     </tr>

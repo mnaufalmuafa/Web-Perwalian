@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -34,7 +35,15 @@ class AdminController extends Controller
 
     public function updateDosen(Request $request)
     {
-        return view('pages.admin.update_dosen');
+        $data = [
+            "id" => $request->get('id'),
+            "lecturer_code" => Dosen::
+                                        where("id", $request->get('id'))
+                                        ->select('lecturer_code')
+                                        ->first()
+                                        ->lecturer_code
+        ];
+        return view('pages.admin.update_dosen', $data);
     }
 
     public function kelas(Request $request)

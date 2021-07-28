@@ -23,4 +23,11 @@ class ApiDosenController extends Controller
         $dosen->lecturer_code = $request->lecturer_code;
         $dosen->save();
     }
+
+    public function editDosen(Request $request)
+    {
+        $dosen =    Dosen::find($request->id);
+        $dosen->lecturer_code = $request->lecturer_code;
+        $dosen->save();
+    }
 }

@@ -46,4 +46,5 @@ Route::prefix('get')->group(function () {
 
 Route::prefix('post')->group(function() {
     Route::get('/store_dosen', [App\Http\Controllers\ApiDosenController::class, 'storeDosen']);
+    Route::get('/edit_dosen', [App\Http\Controllers\ApiDosenController::class, 'editDosen']);
 });
