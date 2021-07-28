@@ -27,14 +27,14 @@ class AdminController extends Controller
         return view('pages.admin.dosen');
     }
 
-    public function storeDosen(Request $request)
+    public function inputDosen(Request $request)
     {
         return view('pages.admin.input_dosen');
     }
 
-    public function editDosen(Request $request)
+    public function updateDosen(Request $request)
     {
-        return view('pages.admin.edit_dosen');
+        return view('pages.admin.update_dosen');
     }
 
     public function kelas(Request $request)
@@ -42,14 +42,14 @@ class AdminController extends Controller
         return view('pages.admin.kelas');
     }
 
-    public function storeKelas(Request $request)
+    public function inputKelas(Request $request)
     {
         return view('pages.admin.input_kelas');
     }
 
-    public function editKelas(Request $request)
+    public function updateKelas(Request $request)
     {
-        return view('pages.admin.edit_kelas');
+        return view('pages.admin.update_kelas');
     }
 
     public function mahasiswa(Request $request)
@@ -57,14 +57,14 @@ class AdminController extends Controller
         return view('pages.admin.mahasiswa');
     }
 
-    public function storeMahasiswa(Request $request)
+    public function inputMahasiswa(Request $request)
     {
         return view('pages.admin.input_mahasiswa');
     }
 
-    public function editMahasiswa(Request $request)
+    public function updateMahasiswa(Request $request)
     {
-        return view('pages.admin.edit_mahasiswa');
+        return view('pages.admin.update_mahasiswa');
     }
 
     // API

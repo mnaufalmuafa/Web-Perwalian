@@ -2,6 +2,6 @@ const btnEditCollection = document.getElementsByClassName("btnEdit");
 
 for (const btnEdit of btnEditCollection) {
     btnEdit.addEventListener("click", function() {
-        window.location.href = "/admin/dashboard/mahasiswa/edit";
+        window.location.href = "/admin/dashboard/mahasiswa/update";
     });
 }

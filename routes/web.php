@@ -24,14 +24,14 @@ Route::get('/choose_user', [ChooseUserController::class, 'index']);
 Route::get('/login_admin', [AdminController::class, 'login']);
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
 Route::get('/admin/dashboard/dosen', [AdminController::class, 'dosen']);
-Route::get('/admin/dashboard/dosen/input', [AdminController::class, 'storeDosen']);
-Route::get('/admin/dashboard/dosen/edit', [AdminController::class, 'editDosen']);
+Route::get('/admin/dashboard/dosen/input', [AdminController::class, 'inputDosen']);
+Route::get('/admin/dashboard/dosen/update', [AdminController::class, 'updateDosen']);
 Route::get('/admin/dashboard/kelas', [AdminController::class, 'kelas']);
-Route::get('/admin/dashboard/kelas/input', [AdminController::class, 'storeKelas']);
-Route::get('/admin/dashboard/kelas/edit', [AdminController::class, 'editKelas']);
+Route::get('/admin/dashboard/kelas/input', [AdminController::class, 'inputKelas']);
+Route::get('/admin/dashboard/kelas/update', [AdminController::class, 'updateKelas']);
 Route::get('/admin/dashboard/mahasiswa', [AdminController::class, 'mahasiswa']);
-Route::get('/admin/dashboard/mahasiswa/input', [AdminController::class, 'storeMahasiswa']);
-Route::get('/admin/dashboard/mahasiswa/edit', [AdminController::class, 'editMahasiswa']);
+Route::get('/admin/dashboard/mahasiswa/input', [AdminController::class, 'inputMahasiswa']);
+Route::get('/admin/dashboard/mahasiswa/update', [AdminController::class, 'updateMahasiswa']);
 
 
 // api
