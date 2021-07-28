@@ -15,6 +15,7 @@
             <label for="inputLecturerCode">Kode Dosen</label>
             <br>
             <input type="text" name="lecturer_code" id="inputLecturerCode" maxlength="3">
+            <small id="smallError">Kode dosen sudah digunakan</small>
             <input type="submit" value="Submit">
         </form>
     </main>

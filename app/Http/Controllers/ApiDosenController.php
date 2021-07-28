@@ -12,16 +12,24 @@ class ApiDosenController extends Controller
         return Dosen::count();
     }
 
-    public function getAllDosen()
+    public static function getAllDosen()
     {
         return Dosen::get();
     }
 
     public function storeDosen(Request $request) {
+        $allDosenLC = Dosen::where('is_deleted', 0)->pluck('lecturer_code');
+
+        foreach ($allDosenLC as $lecturer_code) {
+            if ($lecturer_code == $request->lecturer_code) {
+                return response()->json(false);
+            }
+        }
         $dosen = new Dosen;
         $dosen->id = ApiDosenController::getDosenCount() + 1;
         $dosen->lecturer_code = $request->lecturer_code;
         $dosen->save();
+        return response()->json(true);
     }
 
     public function editDosen(Request $request)
