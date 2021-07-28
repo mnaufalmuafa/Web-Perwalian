@@ -13,7 +13,7 @@ var updateDosen = new Vue({
                 window.history.back();
             }
             else {
-                fetch("http://127.0.0.1:8000/post/edit_dosen?id="+inputId.value+"&lecturer_code="+inputLecturerCode.value)
+                fetch("http://127.0.0.1:8000/api/post/dosen/edit?id="+inputId.value+"&lecturer_code="+inputLecturerCode.value)
                     .then(response => response.json())
                     .then(data => this.checkResponse(data));
             }

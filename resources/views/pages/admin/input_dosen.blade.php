@@ -11,7 +11,7 @@
 @section('content')
     <main id="body-main-content">
         <h2>Input Dosen</h2>
-        <form v-on:submit.prevent="onSubmit" ref="form" target="_blank" action="http://127.0.0.1:8000/post/store_dosen" method="GET">
+        <form v-on:submit.prevent="onSubmit" ref="form" target="_blank" action="http://127.0.0.1:8000/api/post/dosen/store" method="GET">
             <label for="inputLecturerCode">Kode Dosen</label>
             <br>
             <input type="text" name="lecturer_code" id="inputLecturerCode" maxlength="3">

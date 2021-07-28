@@ -22,30 +22,44 @@ Route::get('/', function()
 
 Route::get('/choose_user', [ChooseUserController::class, 'index']);
 Route::get('/login_admin', [AdminController::class, 'login']);
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
-Route::get('/admin/dashboard/dosen', [AdminController::class, 'dosen']);
-Route::get('/admin/dashboard/dosen/input', [AdminController::class, 'inputDosen']);
-Route::get('/admin/dashboard/dosen/update', [AdminController::class, 'updateDosen']);
-Route::get('/admin/dashboard/kelas', [AdminController::class, 'kelas']);
-Route::get('/admin/dashboard/kelas/input', [AdminController::class, 'inputKelas']);
-Route::get('/admin/dashboard/kelas/update', [AdminController::class, 'updateKelas']);
-Route::get('/admin/dashboard/mahasiswa', [AdminController::class, 'mahasiswa']);
-Route::get('/admin/dashboard/mahasiswa/input', [AdminController::class, 'inputMahasiswa']);
-Route::get('/admin/dashboard/mahasiswa/update', [AdminController::class, 'updateMahasiswa']);
+
+Route::prefix('admin')->group(function() {
+    Route::get('/dashboard', [AdminController::class, 'dashboard']);
+    Route::get('/dashboard/dosen', [AdminController::class, 'dosen']);
+    Route::get('/dashboard/dosen/input', [AdminController::class, 'inputDosen']);
+    Route::get('/dashboard/dosen/update', [AdminController::class, 'updateDosen']);
+    Route::get('/dashboard/kelas', [AdminController::class, 'kelas']);
+    Route::get('/dashboard/kelas/input', [AdminController::class, 'inputKelas']);
+    Route::get('/dashboard/kelas/update', [AdminController::class, 'updateKelas']);
+    Route::get('/dashboard/mahasiswa', [AdminController::class, 'mahasiswa']);
+    Route::get('/dashboard/mahasiswa/input', [AdminController::class, 'inputMahasiswa']);
+    Route::get('/dashboard/mahasiswa/update', [AdminController::class, 'updateMahasiswa']);
+});
 
 
 // api
-Route::prefix('get')->group(function () {
-    Route::get('/get_all_admin', [App\Http\Controllers\ApiAdminController::class, 'getAllAdmin']);
-    Route::get('/get_all_dosen', [App\Http\Controllers\ApiDosenController::class, 'getAllDosen']);
-    Route::get('/dosen_count', [App\Http\Controllers\ApiDosenController::class, 'getDosenCount']);
-    Route::get('/kelas_count', [App\Http\Controllers\ApiKelasController::class, 'getKelasCount']);
-    Route::get('/mahasiswa_count', [App\Http\Controllers\ApiMahasiswaController::class, 'getMahasiswaCount']);
-    Route::get('/check_login_admin', [App\Http\Controllers\ApiAdminController::class, 'getCheckLoginAdmin']);
-});
+Route::prefix('api')->group(function(){
+    Route::prefix('get')->group(function() {
+        Route::prefix('dosen')->group(function() {
+            Route::get('/all', [App\Http\Controllers\ApiDosenController::class, 'getAllDosen']);
+            Route::get('/count', [App\Http\Controllers\ApiDosenController::class, 'getDosenCount']);
+        });
+        Route::prefix('kelas')->group(function() {
+            Route::get('/count', [App\Http\Controllers\ApiKelasController::class, 'getKelasCount']);
+        });
+        Route::prefix('mahasiswa')->group(function() {
+            Route::get('/count', [App\Http\Controllers\ApiMahasiswaController::class, 'getMahasiswaCount']);
+        });
+        Route::prefix('admin')->group(function() {
+            Route::get('/check_login', [App\Http\Controllers\ApiAdminController::class, 'getCheckLoginAdmin']);
+        });
+    });
 
-Route::prefix('post')->group(function() {
-    Route::get('/store_dosen', [App\Http\Controllers\ApiDosenController::class, 'storeDosen']);
-    Route::get('/edit_dosen', [App\Http\Controllers\ApiDosenController::class, 'editDosen']);
-    Route::get('/delete_dosen', [App\Http\Controllers\ApiDosenController::class, 'deleteDosen']);
+    Route::prefix('post')->group(function() {
+        Route::prefix('dosen')->group(function(){
+            Route::get('store', [App\Http\Controllers\ApiDosenController::class, 'storeDosen']);
+            Route::get('edit', [App\Http\Controllers\ApiDosenController::class, 'editDosen']);
+            Route::get('delete', [App\Http\Controllers\ApiDosenController::class, 'deleteDosen']);
+        });
+    });
 });

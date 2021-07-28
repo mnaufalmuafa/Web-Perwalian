@@ -8,7 +8,7 @@ var dosenPage = new Vue({
     },
     methods : {
         onpageshow : function(event) {
-            fetch("/get/get_all_dosen")
+            fetch("/api/get/dosen/all")
                 .then(response => response.json())
                 .then(data => this.assignData(data));
             
@@ -26,7 +26,7 @@ var dosenPage = new Vue({
         deleteLecturer : function(id, lc) {
             const willDelete = confirm("Apakah anda yakin akan menghapus dosen \""+lc+"\"");
             if (willDelete) {
-                fetch("http://127.0.0.1:8000/post/delete_dosen?id="+id);
+                fetch("http://127.0.0.1:8000/api/post/dosen/delete?id="+id);
                 window.location.reload();
             }
         },

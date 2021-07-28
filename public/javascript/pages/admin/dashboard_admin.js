@@ -22,15 +22,15 @@ var dashboard = new Vue({
         mahasiswaCount : null,
     },
     mounted : function mounted() {
-        fetch("/get/dosen_count")
+        fetch("/api/get/dosen/count")
             .then(response => response.json())
             .then(data => this.dosenCount = data);
 
-        fetch("/get/kelas_count")
+        fetch("/api/get/kelas/count")
             .then(response => response.json())
             .then(data => this.kelasCount = data);
 
-        fetch("/get/mahasiswa_count")
+        fetch("/api/get/mahasiswa/count")
             .then(response => response.json())
             .then(data => this.mahasiswaCount = data);
     },
