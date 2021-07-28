@@ -30,4 +30,11 @@ class ApiDosenController extends Controller
         $dosen->lecturer_code = $request->lecturer_code;
         $dosen->save();
     }
+
+    public function deleteDosen(Request $request)
+    {
+        $dosen = Dosen::find($request->id);
+        $dosen->is_deleted = 1;
+        $dosen->save();
+    }
 }

@@ -31,7 +31,7 @@
                         <td>-</td>
                         <td>
                             <button @click="redirectToEditPage(d.id)">Edit</button>
-                            <button>Hapus</button>
+                            <button @click="deleteLecturer(d.id ,d.lecturer_code)">Hapus</button>
                         </td>
                     </tr>
                 </tbody>
