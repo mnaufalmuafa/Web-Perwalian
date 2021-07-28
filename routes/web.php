@@ -43,3 +43,7 @@ Route::prefix('get')->group(function () {
     Route::get('/mahasiswa_count', [App\Http\Controllers\ApiMahasiswaController::class, 'getMahasiswaCount']);
     Route::get('/check_login_admin', [App\Http\Controllers\ApiAdminController::class, 'getCheckLoginAdmin']);
 });
+
+Route::prefix('post')->group(function() {
+    Route::get('/store_dosen', [App\Http\Controllers\ApiDosenController::class, 'storeDosen']);
+});

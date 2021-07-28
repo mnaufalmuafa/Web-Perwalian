@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ApiDosenController extends Controller
 {
-    public function getDosenCount()
+    public static function getDosenCount()
     {
         return Dosen::count();
     }
@@ -15,5 +15,12 @@ class ApiDosenController extends Controller
     public function getAllDosen()
     {
         return Dosen::get();
+    }
+
+    public function storeDosen(Request $request) {
+        $dosen = new Dosen;
+        $dosen->id = ApiDosenController::getDosenCount() + 1;
+        $dosen->lecturer_code = $request->lecturer_code;
+        $dosen->save();
     }
 }

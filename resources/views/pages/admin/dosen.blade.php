@@ -37,7 +37,7 @@
                 </tbody>
             </table>
         </section>
-        <section id="sectionNoDataInfo" v-if="dataDosen.length == 0">
+        <section id="sectionNoDataInfo" v-if="dataDosen == null || dataDosen.length == 0">
             <p>Belum ada data dosen</p>
         </section>
     </main>
