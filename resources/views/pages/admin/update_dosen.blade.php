@@ -15,7 +15,9 @@
             <label for="inputLecturerCode">Kode Dosen</label>
             <br>
             <input type="hidden" value="{{ $id }}" id="inputId">
+            <input type="hidden" name="lecturer_code_previous" id="inputLecturerCodePrevious" maxlength="3" value="{{ $lecturer_code }}">
             <input type="text" name="lecturer_code" id="inputLecturerCode" maxlength="3" value="{{ $lecturer_code }}">
+            <small id="smallError">Kode dosen sudah digunakan</small>
             <input type="submit" value="Submit">
         </form>
     </main>

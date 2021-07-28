@@ -34,9 +34,18 @@ class ApiDosenController extends Controller
 
     public function editDosen(Request $request)
     {
+        $allDosenLC = Dosen::where('is_deleted', 0)->pluck('lecturer_code');
+
+        foreach ($allDosenLC as $lecturer_code) {
+            if ($lecturer_code == $request->lecturer_code) {
+                return response()->json(false);
+            }
+        }
+
         $dosen =    Dosen::find($request->id);
         $dosen->lecturer_code = $request->lecturer_code;
         $dosen->save();
+        return response()->json(true);
     }
 
     public function deleteDosen(Request $request)
