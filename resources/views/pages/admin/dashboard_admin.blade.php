@@ -14,34 +14,34 @@
             <article>
                 <main>
                     <div>
-                        <h3>11</h3>
+                        <h3>@{{ dosenCount }}</h3>
                         <h3>Dosen</h3>
                     </div>
                     <img src="/image/icon/png/teacher.png" alt="Dosen">
                 </main>
-                <footer id="footerLecturer">Lebih Lanjut</footer>
+                <footer v-on:click="redirectToInfo('dosen')">Lebih Lanjut</footer>
             </article>
 
             <article>
                 <main>
                     <div>
-                        <h3>33</h3>
+                        <h3>@{{ kelasCount }}</h3>
                         <h3>Kelas</h3>
                     </div>
                     <img src="/image/icon/png/class.png" alt="Kelas">
                 </main>
-                <footer id="footerClass">Lebih Lanjut</footer>
+                <footer v-on:click="redirectToInfo('kelas')">Lebih Lanjut</footer>
             </article>
 
             <article>
                 <main>
                     <div>
-                        <h3>22</h3>
+                        <h3>@{{ mahasiswaCount }}</h3>
                         <h3>Mahasiswa</h3>
                     </div>
                     <img src="/image/icon/png/student.png" alt="Mahasiswa">
                 </main>
-                <footer id="footerStudent">Lebih Lanjut</footer>
+                <footer v-on:click="redirectToInfo('mahasiswa')">Lebih Lanjut</footer>
             </article>
         </section>
     </main>

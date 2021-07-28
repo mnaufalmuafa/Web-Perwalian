@@ -5,7 +5,7 @@ const warnInfo = document.getElementsByTagName("small")[0];
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
-    fetch("http://127.0.0.1:8000/check_login_admin?username="+inputUsername.value+"&password="+inputPassword.value)
+    fetch("http://127.0.0.1:8000/get/check_login_admin?username="+inputUsername.value+"&password="+inputPassword.value)
         .then(response => response.json())
         .then(data => afterSubmit(data));
 });
