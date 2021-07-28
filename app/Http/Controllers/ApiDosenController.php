@@ -9,7 +9,7 @@ class ApiDosenController extends Controller
 {
     public static function getDosenCount()
     {
-        return Dosen::count();
+        return Dosen::where('is_deleted', 0)->count();
     }
 
     public static function getAllDosen()
