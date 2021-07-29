@@ -78,7 +78,7 @@ Route::prefix('api')->group(function(){
         });
         Route::prefix('mahasiswa')->group(function(){
             Route::get('store', [App\Http\Controllers\api\MahasiswaController::class, 'storeMahasiswa']);
-            // Route::get('edit', [App\Http\Controllers\api\KelasController::class, 'editKelas']);
+            Route::get('edit', [App\Http\Controllers\api\MahasiswaController::class, 'editMahasiswa']);
             // Route::get('delete', [App\Http\Controllers\api\KelasController::class, 'deleteKelas']);
         });
     });

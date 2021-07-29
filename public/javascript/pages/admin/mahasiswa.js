@@ -25,7 +25,7 @@ var kelasPage = new Vue({
         },
         redirectToEditPage : function(id) {
             this.dataMahasiswa = null;
-            window.location.href = "/admin/dashboard/kelas/update?id="+id;
+            window.location.href = "/admin/dashboard/mahasiswa/update?id="+id;
         },
         deleteClass : function(id, name) {
             const willDelete = confirm("Apakah anda yakin akan menghapus kelas \""+name+"\"");

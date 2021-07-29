@@ -44,4 +44,26 @@ class MahasiswaController extends Controller
         $mahasiswa->save();
         return response()->json(true);
     }
+
+    public function editMahasiswa(Request $request) {
+        $allMahasiswaNIM = Mahasiswa::where('is_deleted', 0)->pluck('nim');
+
+        $prevNim = Mahasiswa::find($request->id)->nim;
+
+        if ($prevNim != $request->nim) {
+            foreach ($allMahasiswaNIM as $nim) {
+                if ($nim == $request->nim) {
+                    return response()->json(false);
+                }
+            }
+        }
+
+        $mahasiswa = Mahasiswa::find($request->id);
+        $mahasiswa->name = $request->name;
+        $mahasiswa->nim = $request->nim;
+        $mahasiswa->status = $request->status;
+        $mahasiswa->class_id = $request->class_id == 0 ? null : $request->class_id;
+        $mahasiswa->save();
+        return response()->json(true);
+    }
 }

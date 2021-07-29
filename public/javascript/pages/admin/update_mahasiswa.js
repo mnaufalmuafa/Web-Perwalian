@@ -1,8 +1,10 @@
-var inputMahasiswa = new Vue({
+var updateMahasiswa = new Vue({
     el : "main",
     data : {
         dataKelas : null,
         dataDosen : null,
+        status : document.getElementById("inputPrevStatus").value,
+        class_id : document.getElementById("inputPrevKelasId").value,
     },
     created : function(){
         const smallError = document.getElementById("smallError");
@@ -17,19 +19,21 @@ var inputMahasiswa = new Vue({
         onSubmit : function() {
             const smallError = document.getElementById("smallError");
             smallError.style.color = "red";
+            const inputId = document.getElementById("inputId");
             const inputName = document.getElementById("inputName");
             const inputNIM = document.getElementById("inputNIM");
             const inputStatus = document.getElementById("inputStatus");
             const inputClassId = document.getElementById("inputClassId");
 
             let formData = {
-                name : "?name="+inputName.value,
+                id : "?id="+inputId.value,
+                name : "&name="+inputName.value,
                 nim : "&nim="+inputNIM.value,
                 status : "&status="+inputStatus.value,
                 class_id : "&class_id="+inputClassId.value
             };
 
-            fetch("http://127.0.0.1:8000/api/post/mahasiswa/store"+ formData.name + formData.nim + formData.status + formData.class_id )
+            fetch("http://127.0.0.1:8000/api/post/mahasiswa/edit"+ formData.id + formData.name + formData.nim + formData.status + formData.class_id )
                 .then(response => response.json())
                 .then(data => this.checkResponse(data));
         },

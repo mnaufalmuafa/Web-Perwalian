@@ -35,7 +35,7 @@
                         <td>@{{ mahasiswa.class | showClass() }}</td>
                         <td>@{{ mahasiswa.status }}</td>
                         <td>
-                            <button>Edit</button>
+                            <button @click="redirectToEditPage(mahasiswa.id)">Edit</button>
                             <button>Hapus</button>
                         </td>
                     </tr>

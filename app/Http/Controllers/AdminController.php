@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Dosen;
 use App\Models\Kelas;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -87,7 +88,15 @@ class AdminController extends Controller
 
     public function updateMahasiswa(Request $request)
     {
-        return view('pages.admin.update_mahasiswa');
+        $data = [
+            "id" => $request->id,
+            "name" => Mahasiswa::getNameById($request->id),
+            "nim" => Mahasiswa::getNimById($request->id),
+            "status" => Mahasiswa::getStatusById($request->id),
+            "class_id" => Mahasiswa::getClassIdById($request->id) == null ? 0 : Mahasiswa::getClassIdById($request->id),
+        ];
+        // dd($data);
+        return view('pages.admin.update_mahasiswa', $data);
     }
 
     // API
