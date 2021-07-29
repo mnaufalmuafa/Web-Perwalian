@@ -30,7 +30,7 @@
             <label for="inputClassId">Kelas</label>
             <br>
             <select name="class_id" id="inputClassId">
-                <option value="0">--Pilih Kelas--</option>
+                <option value="0">--NULL--</option>
                 <option v-for="kelas in dataKelas" :value="kelas.id">@{{ kelas.name }}</option>
             </select>
 

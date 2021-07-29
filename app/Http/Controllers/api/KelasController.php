@@ -16,7 +16,7 @@ class KelasController extends Controller
 
     public function getDataForInputMahasiswaPage()
     {
-        return Kelas::select('id', 'name')->orderby('name', 'asc')->get();
+        return Kelas::select('id', 'name')->where('is_deleted', 0)->orderby('name', 'asc')->get();
     }
 
     public function storeKelas(Request $request) {
