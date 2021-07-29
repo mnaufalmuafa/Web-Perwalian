@@ -69,7 +69,7 @@ Route::prefix('api')->group(function(){
         Route::prefix('dosen')->group(function(){
             Route::get('store', [App\Http\Controllers\ApiDosenController::class, 'storeDosen']);
             Route::get('edit', [App\Http\Controllers\ApiDosenController::class, 'editDosen']);
-            Route::get('delete', [App\Http\Controllers\ApiDosenController::class, 'deleteDosen']);
+            Route::get('delete', [App\Http\Controllers\api\DosenController::class, 'deleteDosen']);
         });
         Route::prefix('kelas')->group(function(){
             Route::get('store', [App\Http\Controllers\api\KelasController::class, 'storeKelas']);

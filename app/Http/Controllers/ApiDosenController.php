@@ -48,13 +48,6 @@ class ApiDosenController extends Controller
         return response()->json(true);
     }
 
-    public function deleteDosen(Request $request)
-    {
-        $dosen = Dosen::find($request->id);
-        $dosen->is_deleted = 1;
-        $dosen->save();
-    }
-
     public function getDosenForDataKelasPage()
     {
         return Dosen::where('is_deleted', 0)->select('id', 'lecturer_code')->get();
