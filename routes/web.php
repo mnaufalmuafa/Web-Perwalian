@@ -42,16 +42,22 @@ Route::prefix('api')->group(function(){
     Route::prefix('get')->group(function() {
         Route::prefix('dosen')->group(function() {
             Route::get('/all', [App\Http\Controllers\ApiDosenController::class, 'getAllDosen']);
+            Route::get('/for_data_kelas', [App\Http\Controllers\ApiDosenController::class, 'getDosenForDataKelasPage']);
             Route::get('/count', [App\Http\Controllers\ApiDosenController::class, 'getDosenCount']);
         });
         Route::prefix('kelas')->group(function() {
+            Route::get('/all', [App\Http\Controllers\ApiKelasController::class, 'getAllKelas']);
             Route::get('/count', [App\Http\Controllers\ApiKelasController::class, 'getKelasCount']);
+            Route::get('/data_kelas_page', [App\Http\Controllers\api\KelasController::class, 'getDataForKelasDataPage']);
         });
         Route::prefix('mahasiswa')->group(function() {
             Route::get('/count', [App\Http\Controllers\ApiMahasiswaController::class, 'getMahasiswaCount']);
         });
         Route::prefix('admin')->group(function() {
             Route::get('/check_login', [App\Http\Controllers\ApiAdminController::class, 'getCheckLoginAdmin']);
+        });
+        Route::prefix('generation')->group(function() {
+            Route::get('/for_data_kelas', [App\Http\Controllers\api\GenerationController::class, 'getGenerationFordataKelasPage']);
         });
     });
 

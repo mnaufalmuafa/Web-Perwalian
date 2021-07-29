@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Dosen extends Model
+class Generation extends Model
 {
     use HasFactory;
 
     public $increminting = false;
-    protected $table = 'lecturer';
+    protected $table = 'generation';
     public $timestamps = false;
 
-    public static function getDosenCodeById($id)
+    public static function getGenerationById($id)
     {
-        $result = DB::table('lecturer')->where('id', $id)->pluck('lecturer_code');
+        $result = DB::table('generation')->where('id', $id)->pluck('generation');
         if ($result->count() == 0) {
             return null;
         }

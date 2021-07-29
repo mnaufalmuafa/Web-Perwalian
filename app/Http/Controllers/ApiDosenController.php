@@ -26,7 +26,7 @@ class ApiDosenController extends Controller
             }
         }
         $dosen = new Dosen;
-        $dosen->id = ApiDosenController::getDosenCount() + 1;
+        $dosen->id = Dosen::count() + 1;
         $dosen->lecturer_code = $request->lecturer_code;
         $dosen->save();
         return response()->json(true);
@@ -53,5 +53,10 @@ class ApiDosenController extends Controller
         $dosen = Dosen::find($request->id);
         $dosen->is_deleted = 1;
         $dosen->save();
+    }
+
+    public function getDosenForDataKelasPage()
+    {
+        return Dosen::where('is_deleted', 0)->select('id', 'lecturer_code')->get();
     }
 }
