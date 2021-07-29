@@ -13,6 +13,11 @@ class KelasController extends Controller
         return response()->json(Kelas::getDataForDataKelasPage());
     }
 
+    public function getDataForInputMahasiswaPage()
+    {
+        return Kelas::select('id', 'name')->orderby('name', 'asc')->get();
+    }
+
     public function storeKelas(Request $request) {
         $allClassName = Kelas::where('is_deleted', 0)->pluck('name');
 

@@ -58,3 +58,22 @@ input[type=submit] {
 input[type=submit]:hover {
     cursor: pointer;
 }
+
+label[for=inputStatus] {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+#inputName{
+    margin-bottom: 10px;
+}
+
+#inputNIM  {
+    margin-bottom: 0px;
+}
+
+small {
+    display: block;
+    color: red;
+}

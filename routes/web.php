@@ -50,6 +50,7 @@ Route::prefix('api')->group(function(){
             Route::get('/all', [App\Http\Controllers\ApiKelasController::class, 'getAllKelas']);
             Route::get('/count', [App\Http\Controllers\ApiKelasController::class, 'getKelasCount']);
             Route::get('/data_kelas_page', [App\Http\Controllers\api\KelasController::class, 'getDataForKelasDataPage']);
+            Route::get('/input_mahasiswa_page', [App\Http\Controllers\api\KelasController::class, 'getDataForInputMahasiswaPage']);
         });
         Route::prefix('mahasiswa')->group(function() {
             Route::get('/count', [App\Http\Controllers\ApiMahasiswaController::class, 'getMahasiswaCount']);
@@ -74,6 +75,11 @@ Route::prefix('api')->group(function(){
             Route::get('store', [App\Http\Controllers\api\KelasController::class, 'storeKelas']);
             Route::get('edit', [App\Http\Controllers\api\KelasController::class, 'editKelas']);
             Route::get('delete', [App\Http\Controllers\api\KelasController::class, 'deleteKelas']);
+        });
+        Route::prefix('mahasiswa')->group(function(){
+            Route::get('store', [App\Http\Controllers\api\MahasiswaController::class, 'storeMahasiswa']);
+            // Route::get('edit', [App\Http\Controllers\api\KelasController::class, 'editKelas']);
+            // Route::get('delete', [App\Http\Controllers\api\KelasController::class, 'deleteKelas']);
         });
     });
 });

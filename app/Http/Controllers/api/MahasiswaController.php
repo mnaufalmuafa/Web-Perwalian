@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kelas;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,5 +24,24 @@ class MahasiswaController extends Controller
             ]);
         }
         return $data;
+    }
+
+    public function storeMahasiswa(Request $request) {
+        $allMahasiswaNIM = Mahasiswa::where('is_deleted', 0)->pluck('nim');
+
+        foreach ($allMahasiswaNIM as $nim) {
+            if ($nim == $request->nim) {
+                return response()->json(false);
+            }
+        }
+
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa->id = Mahasiswa::count() + 1;
+        $mahasiswa->name = $request->name;
+        $mahasiswa->nim = $request->nim;
+        $mahasiswa->status = $request->status;
+        $mahasiswa->class_id = $request->class_id == 0 ? null : $request->class_id;
+        $mahasiswa->save();
+        return response()->json(true);
     }
 }
