@@ -12,4 +12,9 @@ class GenerationController extends Controller
     {
         return Generation::get();
     }
+
+    public function getGenerationForInputClassPage()
+    {
+        return Generation::where('is_deleted', 0)->select('id', 'generation')->get();
+    }
 }

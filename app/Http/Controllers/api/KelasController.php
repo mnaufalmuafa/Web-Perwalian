@@ -12,4 +12,22 @@ class KelasController extends Controller
     {
         return response()->json(Kelas::getDataForDataKelasPage());
     }
+
+    public function storeKelas(Request $request) {
+        $allClassName = Kelas::where('is_deleted', 0)->pluck('name');
+
+        foreach ($allClassName as $class_name) {
+            if ($class_name == $request->name) {
+                return response()->json(false);
+            }
+        }
+
+        $kelas = new Kelas;
+        $kelas->id = Kelas::count() + 1;
+        $kelas->name = $request->name;
+        $kelas->generation_id = $request->generation_id == 0 ? null : $request->generation_id;
+        $kelas->homeroom_id = $request->homeroom_id == 0 ? null : $request->homeroom_id;
+        $kelas->save();
+        return response()->json(true);
+    }
 }

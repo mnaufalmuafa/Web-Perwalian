@@ -44,6 +44,7 @@ Route::prefix('api')->group(function(){
             Route::get('/all', [App\Http\Controllers\ApiDosenController::class, 'getAllDosen']);
             Route::get('/for_data_kelas', [App\Http\Controllers\ApiDosenController::class, 'getDosenForDataKelasPage']);
             Route::get('/count', [App\Http\Controllers\ApiDosenController::class, 'getDosenCount']);
+            Route::get('/for_input_kelas', [App\Http\Controllers\api\DosenController::class, 'getDosenForInputClassPage']);
         });
         Route::prefix('kelas')->group(function() {
             Route::get('/all', [App\Http\Controllers\ApiKelasController::class, 'getAllKelas']);
@@ -58,6 +59,7 @@ Route::prefix('api')->group(function(){
         });
         Route::prefix('generation')->group(function() {
             Route::get('/for_data_kelas', [App\Http\Controllers\api\GenerationController::class, 'getGenerationFordataKelasPage']);
+            Route::get('/for_input_kelas', [App\Http\Controllers\api\GenerationController::class, 'getGenerationForInputClassPage']);
         });
     });
 
@@ -66,6 +68,11 @@ Route::prefix('api')->group(function(){
             Route::get('store', [App\Http\Controllers\ApiDosenController::class, 'storeDosen']);
             Route::get('edit', [App\Http\Controllers\ApiDosenController::class, 'editDosen']);
             Route::get('delete', [App\Http\Controllers\ApiDosenController::class, 'deleteDosen']);
+        });
+        Route::prefix('kelas')->group(function(){
+            Route::get('store', [App\Http\Controllers\api\KelasController::class, 'storeKelas']);
+            // Route::get('edit', [App\Http\Controllers\ApiDosenController::class, 'editDosen']);
+            // Route::get('delete', [App\Http\Controllers\ApiDosenController::class, 'deleteDosen']);
         });
     });
 });
