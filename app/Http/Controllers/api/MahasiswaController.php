@@ -18,7 +18,7 @@ class MahasiswaController extends Controller
     public function getDataForDataMahasiswaPage()
     {
         $data = [];
-        $dataMahasiswa = DB::table('student')->where('is_deleted', 0)->get();
+        $dataMahasiswa = DB::table('student')->orderBy('name')->where('is_deleted', 0)->get();
         foreach ($dataMahasiswa as $mahasiswa) {
             array_push($data,[
                 "id" => $mahasiswa->id,

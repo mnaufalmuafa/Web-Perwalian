@@ -17,7 +17,7 @@ class Kelas extends Model
     public static function getDataForDataKelasPage()
     {
         $data = [];
-        $dataKelas = DB::table('class')->get();
+        $dataKelas = DB::table('class')->orderBy('name', 'asc')->get();
         foreach ($dataKelas as $kelas) {
             array_push($data,[
                 "id" => $kelas->id,
