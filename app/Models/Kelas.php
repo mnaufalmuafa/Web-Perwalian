@@ -29,4 +29,9 @@ class Kelas extends Model
         }
         return $data;
     }
+
+    public static function getNameByClassId($id)
+    {
+        return Kelas::where('id', $id)->first()->name;
+    }
 }

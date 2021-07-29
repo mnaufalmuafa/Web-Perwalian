@@ -53,6 +53,7 @@ Route::prefix('api')->group(function(){
         });
         Route::prefix('mahasiswa')->group(function() {
             Route::get('/count', [App\Http\Controllers\ApiMahasiswaController::class, 'getMahasiswaCount']);
+            Route::get('/data_mahasiswa_page', [App\Http\Controllers\api\MahasiswaController::class, 'getDataForDataMahasiswaPage']);
         });
         Route::prefix('admin')->group(function() {
             Route::get('/check_login', [App\Http\Controllers\ApiAdminController::class, 'getCheckLoginAdmin']);
