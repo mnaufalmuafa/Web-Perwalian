@@ -34,7 +34,7 @@
                         <td>@{{ kelas.dosen_wali | showDosenWali() }}</td>
                         <td>
                             <button @click="redirectToEditPage(kelas.id)">Edit</button>
-                            <button>Hapus</button>
+                            <button @click="deleteClass(kelas.id, kelas.name)">Hapus</button>
                         </td>
                     </tr>
                 </tbody>

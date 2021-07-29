@@ -1,25 +1,12 @@
-// const footerLecturer = document.getElementById("footerLecturer");
-// const footerStudent = document.getElementById("footerStudent");
-// const footerClass = document.getElementById("footerClass");
-
-// footerLecturer.addEventListener("click", function() {
-//     window.location.href = "/admin/dashboard/dosen";
-// });
-
-// footerStudent.addEventListener("click", function() {
-//     window.location.href = "/admin/dashboard/mahasiswa";
-// });
-
-// footerClass.addEventListener("click", function() {
-//     window.location.href = "/admin/dashboard/kelas";
-// });
-
 var dashboard = new Vue({
     el : "#body-main-content",
     data : {
         dosenCount : null,
         kelasCount : null,
         mahasiswaCount : null,
+    },
+    created : function() {
+        window.addEventListener("pageshow", this.onpageshow);
     },
     mounted : function mounted() {
         fetch("/api/get/dosen/count")
@@ -37,6 +24,13 @@ var dashboard = new Vue({
     methods : {
         redirectToInfo : function(category) {
             window.location.href = "/admin/dashboard/"+category;
-        }
+        },
+        onpageshow : function(event) {
+            var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+            if ( historyTraversal ) {
+                // Handle page restore.
+                window.location.reload();
+            }
+        },
     }
 });

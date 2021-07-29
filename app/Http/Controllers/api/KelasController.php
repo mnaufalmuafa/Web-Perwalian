@@ -57,4 +57,11 @@ class KelasController extends Controller
         $kelas->save();
         return response()->json(true);
     }
+
+    public function deleteKelas(Request $request)
+    {
+        $kelas = Kelas::find($request->id);
+        $kelas->is_deleted = 1;
+        $kelas->save();
+    }
 }

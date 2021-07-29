@@ -30,10 +30,10 @@ var dosenPage = new Vue({
             this.dataKelas = null;
             window.location.href = "/admin/dashboard/kelas/update?id="+id;
         },
-        deleteLecturer : function(id, lc) {
-            const willDelete = confirm("Apakah anda yakin akan menghapus dosen \""+lc+"\"");
+        deleteClass : function(id, name) {
+            const willDelete = confirm("Apakah anda yakin akan menghapus kelas \""+name+"\"");
             if (willDelete) {
-                fetch("http://127.0.0.1:8000/api/post/dosen/delete?id="+id);
+                fetch("http://127.0.0.1:8000/api/post/kelas/delete?id="+id);
                 window.location.reload();
             }
         },
