@@ -71,7 +71,7 @@ Route::prefix('api')->group(function(){
         });
         Route::prefix('kelas')->group(function(){
             Route::get('store', [App\Http\Controllers\api\KelasController::class, 'storeKelas']);
-            // Route::get('edit', [App\Http\Controllers\ApiDosenController::class, 'editDosen']);
+            Route::get('edit', [App\Http\Controllers\api\KelasController::class, 'editKelas']);
             // Route::get('delete', [App\Http\Controllers\ApiDosenController::class, 'deleteDosen']);
         });
     });

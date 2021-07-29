@@ -30,4 +30,31 @@ class KelasController extends Controller
         $kelas->save();
         return response()->json(true);
     }
+
+    private static function getNameById($id)
+    {
+        return Kelas::where("id", $id)->pluck('name')[0];
+    }
+
+    public function editKelas(Request $request)
+    {
+        $allClassName = Kelas::where('is_deleted', 0)->pluck('name');
+
+        $prevName = KelasController::getNameById($request->id);
+
+        if ($prevName != $request->name) {
+            foreach ($allClassName as $class_name) {
+                if ($class_name == $request->name) {
+                    return response()->json(false);
+                }
+            }
+        }
+
+        $kelas = Kelas::find($request->id);
+        $kelas->name = $request->name;
+        $kelas->generation_id = $request->generation_id == 0 ? null : $request->generation_id;
+        $kelas->homeroom_id = $request->homeroom_id == 0 ? null : $request->homeroom_id;
+        $kelas->save();
+        return response()->json(true);
+    }
 }

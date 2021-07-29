@@ -59,7 +59,20 @@ class AdminController extends Controller
 
     public function updateKelas(Request $request)
     {
-        return view('pages.admin.update_kelas');
+        $data = [
+            "id" => $request->get('id'),
+            "class" => Kelas::
+                            where("id", $request->get('id'))
+                            ->select('name', 'generation_id', 'homeroom_id')
+                            ->first()
+        ];
+        if ($data["class"]->generation_id == null) {
+            $data["class"]->generation_id = 0;
+        }
+        if ($data["class"]->homeroom_id == null) {
+            $data["class"]->homeroom_id = 0;
+        }
+        return view('pages.admin.update_kelas', $data);
     }
 
     public function mahasiswa(Request $request)

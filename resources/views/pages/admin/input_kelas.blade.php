@@ -29,7 +29,6 @@
             <select name="homeroom_id" id="inputHomeroom">
                 <option value="0">--Pilih Dosen Wali--</option>
                 <option v-for="(dosen, index) in dataDosen" :value="dosen.id">@{{ dosen.lecturer_code }}</option>
-                <option value="1">DEF</option>
             </select>
 
             <input type="hidden" name="is_deleted" value="0">

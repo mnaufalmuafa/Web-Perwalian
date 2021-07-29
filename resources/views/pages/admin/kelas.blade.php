@@ -15,7 +15,7 @@
             <a href="/admin/dashboard/kelas/input"><button>Tambah Kelas</button></a>
         </section>
 
-        <section id="classDaataSection">
+        <section id="classDataSection">
             <table cellspacing="0">
                 <thead>
                     <tr>
@@ -33,7 +33,7 @@
                         <td>@{{ kelas.generation | showGeneration() }}</td>
                         <td>@{{ kelas.dosen_wali | showDosenWali() }}</td>
                         <td>
-                            <button class="btnEdit">Edit</button>
+                            <button @click="redirectToEditPage(kelas.id)">Edit</button>
                             <button>Hapus</button>
                         </td>
                     </tr>

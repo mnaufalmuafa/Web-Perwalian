@@ -28,7 +28,7 @@ var dosenPage = new Vue({
         },
         redirectToEditPage : function(id) {
             this.dataKelas = null;
-            window.location.href = "/admin/dashboard/dosen/update?id="+id;
+            window.location.href = "/admin/dashboard/kelas/update?id="+id;
         },
         deleteLecturer : function(id, lc) {
             const willDelete = confirm("Apakah anda yakin akan menghapus dosen \""+lc+"\"");
