@@ -53,7 +53,7 @@ Route::prefix('api')->group(function(){
             Route::get('/input_mahasiswa_page', [App\Http\Controllers\api\KelasController::class, 'getDataForInputMahasiswaPage']);
         });
         Route::prefix('mahasiswa')->group(function() {
-            Route::get('/count', [App\Http\Controllers\ApiMahasiswaController::class, 'getMahasiswaCount']);
+            Route::get('/count', [App\Http\Controllers\api\MahasiswaController::class, 'getMahasiswaCount']);
             Route::get('/data_mahasiswa_page', [App\Http\Controllers\api\MahasiswaController::class, 'getDataForDataMahasiswaPage']);
         });
         Route::prefix('admin')->group(function() {
@@ -79,7 +79,7 @@ Route::prefix('api')->group(function(){
         Route::prefix('mahasiswa')->group(function(){
             Route::get('store', [App\Http\Controllers\api\MahasiswaController::class, 'storeMahasiswa']);
             Route::get('edit', [App\Http\Controllers\api\MahasiswaController::class, 'editMahasiswa']);
-            // Route::get('delete', [App\Http\Controllers\api\KelasController::class, 'deleteKelas']);
+            Route::get('delete', [App\Http\Controllers\api\MahasiswaController::class, 'deleteMahasiswa']);
         });
     });
 });

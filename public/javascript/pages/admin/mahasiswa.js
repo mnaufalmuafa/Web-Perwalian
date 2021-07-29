@@ -27,10 +27,10 @@ var kelasPage = new Vue({
             this.dataMahasiswa = null;
             window.location.href = "/admin/dashboard/mahasiswa/update?id="+id;
         },
-        deleteClass : function(id, name) {
-            const willDelete = confirm("Apakah anda yakin akan menghapus kelas \""+name+"\"");
+        deleteMahasiswa : function(id, name) {
+            const willDelete = confirm("Apakah anda yakin akan menghapus mahasiswa \""+name+"\"");
             if (willDelete) {
-                fetch("http://127.0.0.1:8000/api/post/kelas/delete?id="+id);
+                fetch("http://127.0.0.1:8000/api/post/mahasiswa/delete?id="+id);
                 window.location.reload();
             }
         },

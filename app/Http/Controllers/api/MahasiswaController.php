@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
+    public function getMahasiswaCount()
+    {
+        return Mahasiswa::where('is_deleted', 0)->count();
+    }
+    
     public function getDataForDataMahasiswaPage()
     {
         $data = [];
@@ -65,5 +70,12 @@ class MahasiswaController extends Controller
         $mahasiswa->class_id = $request->class_id == 0 ? null : $request->class_id;
         $mahasiswa->save();
         return response()->json(true);
+    }
+
+    public function deleteMahasiswa(Request $request)
+    {
+        $mahasiswa = Mahasiswa::find($request->id);
+        $mahasiswa->is_deleted = 1;
+        $mahasiswa->save();
     }
 }

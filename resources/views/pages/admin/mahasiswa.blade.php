@@ -36,7 +36,7 @@
                         <td>@{{ mahasiswa.status }}</td>
                         <td>
                             <button @click="redirectToEditPage(mahasiswa.id)">Edit</button>
-                            <button>Hapus</button>
+                            <button @click="deleteMahasiswa(mahasiswa.id, mahasiswa.name)">Hapus</button>
                         </td>
                     </tr>
                 </tbody>
