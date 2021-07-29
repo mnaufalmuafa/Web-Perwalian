@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kelas;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -68,5 +69,6 @@ class KelasController extends Controller
         $kelas = Kelas::find($request->id);
         $kelas->is_deleted = 1;
         $kelas->save();
+        Mahasiswa::where('class_id', $request->id)->update(['class_id' => null]);
     }
 }
