@@ -83,5 +83,8 @@ Route::prefix('api')->group(function(){
             Route::get('edit', [App\Http\Controllers\api\MahasiswaController::class, 'editMahasiswa']);
             Route::get('delete', [App\Http\Controllers\api\MahasiswaController::class, 'deleteMahasiswa']);
         });
+        Route::prefix('admin')->group(function(){
+            Route::get('logout', [App\Http\Controllers\api\AdminController::class, 'logout']);
+        });
     });
 });
