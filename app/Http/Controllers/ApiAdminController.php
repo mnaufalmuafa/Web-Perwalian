@@ -19,6 +19,9 @@ class ApiAdminController extends Controller
                     where("username", "=", $request->username)
                     ->where("password", "=", $request->password)
                     ->count();
+        if ($result > 0) {
+            session(['is_admin_login' => 1]);
+        }
         return json_encode($result > 0);
     }
 }

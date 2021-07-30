@@ -20,11 +20,13 @@ Route::get('/', function()
     return redirect('choose_user');
 });
 
-Route::get('/choose_user', [ChooseUserController::class, 'index']);
-Route::get('/login_admin', [AdminController::class, 'login']);
+Route::middleware(['IsAdminNotLogin'])->group(function() {
+    Route::get('/choose_user', [ChooseUserController::class, 'index']);
+    Route::get('/login_admin', [AdminController::class, 'login'])->name('login_admin');
+});
 
-Route::prefix('admin')->group(function() {
-    Route::get('/dashboard', [AdminController::class, 'dashboard']);
+Route::prefix('admin')->middleware(['IsAdminLogin'])->group(function() {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard_admin');
     Route::get('/dashboard/dosen', [AdminController::class, 'dosen']);
     Route::get('/dashboard/dosen/input', [AdminController::class, 'inputDosen']);
     Route::get('/dashboard/dosen/update', [AdminController::class, 'updateDosen']);
