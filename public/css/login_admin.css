@@ -41,11 +41,12 @@ input {
     margin: 8px 0px;
 }
 
-input[type=submit] {
+button[type=submit] {
     text-align: center;
     width: 100%;
-    background-color: #B0FFF0;
-    color: black;
+    background-color: #1F4B7A;
+    color: white;
+    font-weight: bold;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;

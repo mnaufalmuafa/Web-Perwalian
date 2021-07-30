@@ -29,7 +29,7 @@
                     <input type="password" id="inputPassword">
                     <br>
                     <small class="hidden-small">Username atau password salah</small>
-                    <input type="submit" value="Login">
+                    <button type="submit">Login</button>
                 </form>
             </main>
         </article>
