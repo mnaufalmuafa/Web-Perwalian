@@ -20,6 +20,8 @@ Route::get('/', function()
     return redirect('choose_user');
 });
 
+Route::get('/beranda', [App\Http\Controllers\dosen\HomeController::class, 'index']);
+
 Route::middleware(['IsAdminNotLogin'])->group(function() {
     Route::get('/choose_user', [ChooseUserController::class, 'index']);
     Route::get('/login_admin', [AdminController::class, 'login'])->name('login_admin');

@@ -21,7 +21,7 @@
                 <h2>Siapa yang menggunakan web?</h2>
             </header>
             <main id="article-main-content">
-                <a href="#">
+                <a href="/beranda">
                     <figure>
                         <img src="{{ url('image/icon/lecturer.jpeg') }}" >
                         <figcaption>Dosen</figcaption>

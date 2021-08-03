@@ -1,0 +1,19 @@
+main {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    border: none;
+    padding: 15px 32px;
+    margin: 0px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+button:hover {
+    cursor: pointer;
+}
