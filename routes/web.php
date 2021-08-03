@@ -43,14 +43,14 @@ Route::prefix('admin')->middleware(['IsAdminLogin'])->group(function() {
 Route::prefix('api')->group(function(){
     Route::prefix('get')->group(function() {
         Route::prefix('dosen')->group(function() {
-            Route::get('/all', [App\Http\Controllers\ApiDosenController::class, 'getAllDosen']);
-            Route::get('/for_data_kelas', [App\Http\Controllers\ApiDosenController::class, 'getDosenForDataKelasPage']);
-            Route::get('/count', [App\Http\Controllers\ApiDosenController::class, 'getDosenCount']);
+            Route::get('/all', [App\Http\Controllers\api\DosenController::class, 'getAllDosen']);
+            Route::get('/for_data_kelas', [App\Http\Controllers\api\DosenController::class, 'getDosenForDataKelasPage']);
+            Route::get('/count', [App\Http\Controllers\api\DosenController::class, 'getDosenCount']);
             Route::get('/for_input_kelas', [App\Http\Controllers\api\DosenController::class, 'getDosenForInputClassPage']);
         });
         Route::prefix('kelas')->group(function() {
-            Route::get('/all', [App\Http\Controllers\ApiKelasController::class, 'getAllKelas']);
-            Route::get('/count', [App\Http\Controllers\ApiKelasController::class, 'getKelasCount']);
+            Route::get('/all', [App\Http\Controllers\api\KelasController::class, 'getAllKelas']);
+            Route::get('/count', [App\Http\Controllers\api\KelasController::class, 'getKelasCount']);
             Route::get('/data_kelas_page', [App\Http\Controllers\api\KelasController::class, 'getDataForKelasDataPage']);
             Route::get('/input_mahasiswa_page', [App\Http\Controllers\api\KelasController::class, 'getDataForInputMahasiswaPage']);
         });
@@ -59,7 +59,7 @@ Route::prefix('api')->group(function(){
             Route::get('/data_mahasiswa_page', [App\Http\Controllers\api\MahasiswaController::class, 'getDataForDataMahasiswaPage']);
         });
         Route::prefix('admin')->group(function() {
-            Route::get('/check_login', [App\Http\Controllers\ApiAdminController::class, 'getCheckLoginAdmin']);
+            Route::get('/check_login', [App\Http\Controllers\api\AdminController::class, 'getCheckLoginAdmin']);
         });
         Route::prefix('generation')->group(function() {
             Route::get('/for_data_kelas', [App\Http\Controllers\api\GenerationController::class, 'getGenerationFordataKelasPage']);
@@ -69,8 +69,8 @@ Route::prefix('api')->group(function(){
 
     Route::prefix('post')->group(function() {
         Route::prefix('dosen')->group(function(){
-            Route::get('store', [App\Http\Controllers\ApiDosenController::class, 'storeDosen']);
-            Route::get('edit', [App\Http\Controllers\ApiDosenController::class, 'editDosen']);
+            Route::get('store', [App\Http\Controllers\api\DosenController::class, 'storeDosen']);
+            Route::get('edit', [App\Http\Controllers\api\DosenController::class, 'editDosen']);
             Route::get('delete', [App\Http\Controllers\api\DosenController::class, 'deleteDosen']);
         });
         Route::prefix('kelas')->group(function(){

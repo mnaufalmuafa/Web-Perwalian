@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KelasController extends Controller
 {
@@ -70,5 +71,15 @@ class KelasController extends Controller
         $kelas->is_deleted = 1;
         $kelas->save();
         Mahasiswa::where('class_id', $request->id)->update(['class_id' => null]);
+    }
+
+    public function getKelasCount()
+    {
+        return Kelas::where('is_deleted', 0)->count();
+    }
+
+    public static function getAllKelas()
+    {
+        return DB::table('class')->get();
     }
 }
