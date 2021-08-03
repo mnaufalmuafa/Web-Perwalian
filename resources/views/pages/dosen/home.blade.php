@@ -10,7 +10,7 @@
 
 @section('content')
     <main>
-        <button class="default-button-color">Isi form 2</button>
-        <button class="default-button-color">Isi form 3</button>
+        <a href=""><button class="default-button-color">Isi form 2</button></a>
+        <a href=""><button class="default-button-color">Isi form 3</button></a>
     </main>
 @endsection
