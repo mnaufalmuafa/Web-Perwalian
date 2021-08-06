@@ -25,13 +25,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(d, index) in dataDosen">
+                    <tr v-for="(d, index) in dataDosen" v-if="index < dataKodeDosen.length">
                         <td>@{{ index + 1 }}</td>
-                        <td>@{{ d.lecturer_code }}</td>
-                        <td>-</td>
+                        <td>@{{ dataKodeDosen[index] }}</td>
+                        <td><span v-for="(kelas, index2) in dataKelas[index]">@{{ kelas }}</span></td>
                         <td>
-                            <button @click="redirectToEditPage(d.id)">Edit</button>
-                            <button @click="deleteLecturer(d.id ,d.lecturer_code)">Hapus</button>
+                            <button @click="redirectToEditPage(dataIdDosen[index])">Edit</button>
+                            <button @click="deleteLecturer(dataIdDosen[index], dataKodeDosen[index])">Hapus</button>
                         </td>
                     </tr>
                 </tbody>

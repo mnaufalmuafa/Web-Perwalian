@@ -18,6 +18,15 @@ class DosenController extends Controller
                     ->get();
     }
 
+    public function getDosenForDataDosenPage()
+    {
+        return Dosen::
+                    orderBy('lecturer.lecturer_code', 'asc')
+                    ->leftJoin('class', 'class.homeroom_id', '=', 'lecturer.id')
+                    ->select('lecturer.id', 'lecturer.lecturer_code', 'lecturer.is_deleted', 'class.name')
+                    ->get();
+    }
+
     public function deleteDosen(Request $request)
     {
         $dosen = Dosen::find($request->id);

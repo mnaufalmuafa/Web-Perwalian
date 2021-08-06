@@ -48,6 +48,7 @@ Route::prefix('api')->group(function(){
         Route::prefix('dosen')->group(function() {
             Route::get('/all', [App\Http\Controllers\api\DosenController::class, 'getAllDosen']);
             Route::get('/for_data_kelas', [App\Http\Controllers\api\DosenController::class, 'getDosenForDataKelasPage']);
+            Route::get('/for_data_dosen', [App\Http\Controllers\api\DosenController::class, 'getDosenForDataDosenPage']);
             Route::get('/count', [App\Http\Controllers\api\DosenController::class, 'getDosenCount']);
             Route::get('/for_input_kelas', [App\Http\Controllers\api\DosenController::class, 'getDosenForInputClassPage']);
         });

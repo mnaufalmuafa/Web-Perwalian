@@ -87,3 +87,7 @@ td {
 td:last-child {
     border-right: 1px solid black;
 }
+
+td span {
+    display: block;
+}

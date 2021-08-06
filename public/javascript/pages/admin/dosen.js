@@ -2,13 +2,16 @@ var dosenPage = new Vue({
     el : "main",
     data : {
         dataDosen : null,
+        dataKodeDosen : [], // berisi kode dosen
+        dataIdDosen : [], // berisi id dosen
+        dataKelas : [],
     },
     created : function() {
         window.addEventListener("pageshow", this.onpageshow);
     },
     methods : {
         onpageshow : function(event) {
-            fetch("/api/get/dosen/all")
+            fetch("/api/get/dosen/for_data_dosen")
                 .then(response => response.json())
                 .then(data => this.assignData(data));
             
@@ -34,6 +37,10 @@ var dosenPage = new Vue({
             return dosen.isDeleted === 0;
         },
         assignData : function(data) {
+            data = this.filterDeleted(data);
+            this.dataDosen = this.mergeSameDosen(data);
+        },
+        filterDeleted : function(data) {
             let i = 0;
             let deleted_index = [];
             for (const d of data) {
@@ -49,7 +56,28 @@ var dosenPage = new Vue({
                 }
             }
 
-            this.dataDosen = data;
+            return data
+        },
+        mergeSameDosen : function(data) {
+            
+            // mengisi dataKodeDosen dan dataIdDosen
+            for (let i = 0; i < data.length; i++) {
+                if (!this.dataKodeDosen.includes(data[i].lecturer_code)) {
+                    this.dataKodeDosen.push(data[i].lecturer_code);
+                    this.dataIdDosen.push(data[i].id);
+                }
+            }
+
+            for (let i = 0; i < this.dataKodeDosen.length; i++) {
+                this.dataKelas.push([]);
+                for (let j = 0; j < data.length; j++) {
+                    if (data[j].lecturer_code == this.dataKodeDosen[i]) {
+                        this.dataKelas[i].push(data[j].name);
+                    }
+                }
+            }
+
+            return data;
         }
     }
 });
