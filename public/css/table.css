@@ -1,0 +1,18 @@
+th {
+    background-color: #1F4B7A;
+    color: white;
+    font-weight: initial;
+}
+
+th, td {
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+th:last-child, td:last-child {
+    border-right: 1px solid black;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

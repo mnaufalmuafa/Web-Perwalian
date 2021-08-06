@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0px;
     padding: 0px;
@@ -15,4 +19,15 @@ h1 {
 .default-button-color {
     background-color: #1F4B7A;
     color: white;
+}
+
+.btn {
+    background-color: #1F4B7A;
+    border: none;
+    color: white;
+    padding: 3px 5px;
+}
+
+.btn:hover {
+    cursor: pointer;
 }

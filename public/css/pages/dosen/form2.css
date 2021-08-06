@@ -1,0 +1,100 @@
+form {
+    padding-bottom: 10px;
+}
+
+form > article {
+    border: 1px solid black;
+}
+
+form > article, table {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.headingArticle {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.headingArticle > header {
+    background-color: #1F4B7A;
+}
+
+.heading1Article > header {
+    height: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.heading1Article > h1 {
+    font-size: 1.5rem;
+}
+
+.heading2Article, .ordinaryArticle, table {
+    margin-top: 20px;
+}
+
+.heading2Article > header {
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.heading2Article > h2 {
+    margin-left: 20px;
+    font-size: 1.2rem;
+}
+
+.ordinaryArticle {
+    padding: 20px 10px;
+    border-radius: 10px;
+}
+
+.ordinaryArticle input, .ordinaryArticle textarea {
+    width: 100%;
+}
+
+.ordinaryArticle p {
+    margin-top: 0px;
+}
+
+select {
+    width: 100%;
+}
+
+p.errorMessage {
+    display: none;
+    margin-bottom: 0px;
+    text-align: center;
+    color: red;
+}
+
+p.info {
+    display: none;
+    margin-bottom: 0px;
+    text-align: center;
+    color: black;
+}
+
+table[name=keterangan] {
+    width: 100%;
+}
+
+th:last-child {
+    width: 20%;
+}
+
+button[type=submit] {
+    float: right;
+    margin-right: 5vw;
+    margin-top: 10px;
+}
+
+.clear {
+    clear: right;
+}
+
+.btn {
+    font-size: 1.1rem;
+}
