@@ -21,7 +21,7 @@ Route::get('/', function()
 });
 
 Route::get('/beranda', [App\Http\Controllers\dosen\HomeController::class, 'index']);
-Route::get('/form2', [App\Http\Controllers\admin\Form2Controller::class, 'index']);
+Route::get('/form2', [App\Http\Controllers\dosen\FormController::class, 'form2']);
 
 Route::middleware(['IsAdminNotLogin'])->group(function() {
     Route::get('/choose_user', [ChooseUserController::class, 'index']);
@@ -51,16 +51,19 @@ Route::prefix('api')->group(function(){
             Route::get('/for_data_dosen', [App\Http\Controllers\api\DosenController::class, 'getDosenForDataDosenPage']);
             Route::get('/count', [App\Http\Controllers\api\DosenController::class, 'getDosenCount']);
             Route::get('/for_input_kelas', [App\Http\Controllers\api\DosenController::class, 'getDosenForInputClassPage']);
+            Route::get('/for_form', [App\Http\Controllers\api\DosenController::class, 'getDosenForFormPage']);
         });
         Route::prefix('kelas')->group(function() {
             Route::get('/all', [App\Http\Controllers\api\KelasController::class, 'getAllKelas']);
             Route::get('/count', [App\Http\Controllers\api\KelasController::class, 'getKelasCount']);
             Route::get('/data_kelas_page', [App\Http\Controllers\api\KelasController::class, 'getDataForKelasDataPage']);
             Route::get('/input_mahasiswa_page', [App\Http\Controllers\api\KelasController::class, 'getDataForInputMahasiswaPage']);
+            Route::get('/by_homeroomid', [App\Http\Controllers\api\KelasController::class, 'getKelasByLecturerId']);
         });
         Route::prefix('mahasiswa')->group(function() {
             Route::get('/count', [App\Http\Controllers\api\MahasiswaController::class, 'getMahasiswaCount']);
             Route::get('/data_mahasiswa_page', [App\Http\Controllers\api\MahasiswaController::class, 'getDataForDataMahasiswaPage']);
+            Route::get('/for_form_page', [App\Http\Controllers\api\MahasiswaController::class, 'getMahasiswaForFormPage']);
         });
         Route::prefix('admin')->group(function() {
             Route::get('/check_login', [App\Http\Controllers\api\AdminController::class, 'getCheckLoginAdmin']);
@@ -68,6 +71,9 @@ Route::prefix('api')->group(function(){
         Route::prefix('generation')->group(function() {
             Route::get('/for_data_kelas', [App\Http\Controllers\api\GenerationController::class, 'getGenerationFordataKelasPage']);
             Route::get('/for_input_kelas', [App\Http\Controllers\api\GenerationController::class, 'getGenerationForInputClassPage']);
+        });
+        Route::prefix('school_year')->group(function(){
+            Route::get('/all', [App\Http\Controllers\api\SchoolYearController::class, 'getAllSchoolYear']);
         });
     });
 

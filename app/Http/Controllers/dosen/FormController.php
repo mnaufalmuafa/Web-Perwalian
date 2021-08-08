@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\dosen;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Form2Controller extends Controller
+class FormController extends Controller
 {
-    public function index()
+    public function form2()
     {
         return view('pages.dosen.form2');
     }

@@ -16,32 +16,66 @@
                 <h1>Berita Acara Perwalian ke-2</h1>
             </article>
             
+            <!-- Kode Dosen -->
             <article class="ordinaryArticle">
                 <p>Kode Dosen</p>
-                <select>
-                    <option>-- Kode Dosen --</option>
-                    <option>REG</option>
-                    <option>TYG</option>
-                    <option>FTG</option>
-                    <option>QDF</option>
+                <select
+                    v-model="selectedLecturerId"
+                    @change="selectLecturerOnChange()">
+                    <option value="0">-- Kode Dosen --</option>
+                    <option v-for="(d, index) in dataDosen" :value="d.id">@{{ d.lecturer_code }}</option>
                 </select>
             </article>
             
-            <p class="errorMessage">Anda tidak memiliki kelas wali</p>
-            <p class="info">Fetching data...</p>
+            <p class="errorMessage" v-if="(arrClass === null || arrClass.length == 0) && selectedLecturerId != 0">Anda tidak memiliki kelas wali</p>
+            <p class="info" id="fetchingClass">Fetching data...</p>
             
-            <article class="ordinaryArticle">
+            <!-- Kelas -->
+            <article class="ordinaryArticle" v-if="selectedLecturerId != 0 && arrClass !== null && arrClass.length > 0">
                 <p>Pilih Kelas</p>
-                <select>
-                    <option>-- Kelas --</option>
-                    <option>IF-42-01</option>
-                    <option>IF-42-02</option>
-                    <option>IF-42-03</option>
-                    <option>IF-42-04</option>
+                <select
+                    v-model="selectedClassId"
+                    @change="selectClassOnChange()">
+                    <option value="0">-- Kelas --</option>
+                    <option v-for="(k, index) in arrClass" :value="k.id">@{{ k.name }}</option>
                 </select>
             </article>
+
+            <!-- Tahun Ajaran -->
+            <article class="ordinaryArticle" v-if="selectedLecturerId !== 0 && arrClass.length > 0 && selectedClassId != 0">
+                <p>Tahun Ajaran</p>
+                <select
+                    v-model="selectedSchoolYearId"
+                    @change="reloadWithUpdatedValue()">
+                    <option v-for="(ta, index) in arrSchoolYear" :value="ta.id">@{{ ta.first_year + '/' + ta.second_year }}</option>
+                </select>
+            </article>
+
+            <!-- Semester -->
+            <article class="ordinaryArticle" v-if="selectedLecturerId !== 0 && arrClass.length > 0  && selectedClassId != 0">
+                <p>Semester</p>
+                <input 
+                    type="radio" 
+                    name="semester" 
+                    id="RBSemesterGanjil"
+                    value="Ganjil" 
+                    @change="rbSemesterOnChange($event)"
+                    :checked="selectedSemester == 'Ganjil'">
+                <label 
+                    for="RBSemesterGanjil">Ganjil</label>
+                <br>
+                <input 
+                    type="radio" 
+                    name="semester" 
+                    id="RBSemesterGenap" 
+                    value="Genap" 
+                    @change="rbSemesterOnChange($event)"
+                    :checked="selectedSemester == 'Genap'">
+                <label 
+                for="RBSemesterGenap">Genap</label>
+            </article>
             
-            <table cellspacing="0">
+            <table cellspacing="0" v-if="arrStudent !== null && arrStudent.length > 0">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -52,28 +86,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1301140026</td>
-                        <td>FAUZAN IRALDI</td>
+                    <tr v-for="(student, i) in arrStudent">
+                        <td>@{{ i+1 }}</td>
+                        <td>@{{ student.nim }}</td>
+                        <td>@{{ student.name }}</td>
                         <td>
-                            <input type="radio" name="mahasiswaX" value="Hadir">
+                            <input type="radio" :name="'presence'+student.nim" value="Hadir">
                             <label>Hadir</label>
                             <br>
-                            <input type="radio" name="mahasiswaX" value="Tidak Hadir">
-                            <label>Tidak Hadir</label>
-                        </td>
-                        <td><input type="text" name="keterangan" value=""></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1301140029</td>
-                        <td>LUTHFI FAUZANI AHMAD</td>
-                        <td>
-                            <input type="radio" name="mahasiswa2" value="Hadir">
-                            <label>Hadir</label>
-                            <br>
-                            <input type="radio" name="mahasiswa2" value="Tidak Hadir">
+                            <input type="radio" :name="'presence'+student.nim" value="Tidak Hadir">
                             <label>Tidak Hadir</label>
                         </td>
                         <td><input type="text" name="keterangan" value=""></td>
@@ -81,7 +102,7 @@
                 </tbody>
             </table>
             
-            <article class="heading2Article headingArticle">
+            <!-- <article class="heading2Article headingArticle">
                 <header></header>
                 <h2>Perwalian mahasiswa angkatan 2020</h2>
             </article>
@@ -108,10 +129,14 @@
             <article class="ordinaryArticle">
                 <p>Pertanyaan 4</p>
                 <input type="file">
-            </article>
+            </article> -->
 
             <button type="submit" class="btn">Submit</button>
             <div class="clear"></div>
         </form>
     </main>
+@endsection
+
+@section('add-on-script')
+    <script type="text/javascript" src="{{ url('/javascript/pages/dosen/form2.js') }}"></script>
 @endsection

@@ -82,4 +82,9 @@ class KelasController extends Controller
     {
         return DB::table('class')->get();
     }
+
+    public function getKelasByLecturerId(Request $request)
+    {
+        return Kelas::where('homeroom_id', $request->homeroom_id)->get();
+    }
 }

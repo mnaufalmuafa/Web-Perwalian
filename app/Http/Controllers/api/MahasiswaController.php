@@ -78,4 +78,9 @@ class MahasiswaController extends Controller
         $mahasiswa->is_deleted = 1;
         $mahasiswa->save();
     }
+
+    public function getMahasiswaForFormPage(Request $request)
+    {
+        return Mahasiswa::where('class_id', $request->class_id)->orderBy('nim')->get();
+    }
 }

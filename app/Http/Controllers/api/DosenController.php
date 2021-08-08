@@ -80,4 +80,11 @@ class DosenController extends Controller
     {
         return Dosen::where('is_deleted', 0)->select('id', 'lecturer_code')->get();
     }
+
+    public function getDosenForFormPage()
+    {
+        return Dosen::
+                    orderBy('lecturer_code', 'asc')
+                    ->get();
+    }
 }

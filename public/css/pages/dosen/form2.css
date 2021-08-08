@@ -64,7 +64,7 @@ select {
 }
 
 p.errorMessage {
-    display: none;
+    /* display: none; */
     margin-bottom: 0px;
     text-align: center;
     color: red;
@@ -97,4 +97,13 @@ button[type=submit] {
 
 .btn {
     font-size: 1.1rem;
+}
+
+.d-none {
+    display: none;
+}
+
+input[type=radio] {
+    display: inline;
+    width: fit-content;
 }
