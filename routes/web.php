@@ -77,6 +77,9 @@ Route::prefix('api')->group(function(){
         Route::prefix('school_year')->group(function(){
             Route::get('/all', [App\Http\Controllers\api\SchoolYearController::class, 'getAllSchoolYear']);
         });
+        Route::prefix('question')->group(function() {
+            Route::get('form', [App\Http\Controllers\api\QuestionController::class, 'getFormQuestion']);
+        });
     });
 
     Route::prefix('post')->group(function() {

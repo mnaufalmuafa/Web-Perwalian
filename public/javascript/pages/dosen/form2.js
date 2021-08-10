@@ -8,7 +8,8 @@ var form2 = new Vue({
         arrStudent : null,
         arrSchoolYear : [],
         selectedSchoolYearId : 0,
-        selectedSemester : "Ganjil"
+        selectedSemester : "Ganjil",
+        arrQuestions : [],
     },
     created : function() {
         window.addEventListener("pageshow", this.onpageshow);
@@ -100,7 +101,13 @@ var form2 = new Vue({
         setupSelectedClass : function() {
             fetch("/api/get/mahasiswa/for_form_page?class_id="+this.selectedClassId)
                 .then(response => response.json())
-                .then(data => this.arrStudent = data);
+                .then(data => this.arrStudent = data)
+                .then(this.fetchQuestion);
+        },
+        fetchQuestion : function() {
+            fetch("http://127.0.0.1:8000/api/get/question/form?sequence=2")
+                .then(response => response.json())
+                .then(data => this.arrQuestions = data);
         }
     }
 });
