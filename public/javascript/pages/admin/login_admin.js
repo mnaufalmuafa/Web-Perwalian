@@ -1,21 +1,29 @@
-const form = document.getElementsByTagName("form")[0];
-const inputUsername = document.getElementById("inputUsername");
-const inputPassword = document.getElementById("inputPassword");
-const warnInfo = document.getElementsByTagName("small")[0];
-
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
-    fetch("http://127.0.0.1:8000/api/get/admin/check_login?username="+inputUsername.value+"&password="+inputPassword.value)
-        .then(response => response.json())
-        .then(data => afterSubmit(data));
+let loginAdmin = new Vue({
+    el : "main",
+    data : {
+        currentlyFetching : false,
+        alreadyFetching : false,
+        usernameOrPasswordFalse : false,
+        username : "",
+        password : "",
+    },
+    methods : {
+        onSubmit : function() {
+            this.alreadyFetching = true;
+            this.currentlyFetching = true;
+            fetch("/api/get/admin/check_login?username="+this.username+"&password="+this.password)
+                .then(response => response.json())
+                .then(isLoginAccepted => this.checkLoginAccepted(isLoginAccepted));
+        },
+        checkLoginAccepted: function(isLoginAccepted) {
+            this.currentlyFetching = false;
+            if (isLoginAccepted) {
+                this.usernameOrPasswordFalse = false;
+                window.location.href = "/admin/dashboard";
+            }
+            else {
+                this.usernameOrPasswordFalse = true;
+            }
+        }
+    }
 });
-
-function afterSubmit(isSuccess) {
-    if (isSuccess) {
-        warnInfo.classList.add("hidden-small");
-        window.location.href = "/admin/dashboard";
-    }
-    else {
-        warnInfo.classList.remove("hidden-small");
-    }
-}
