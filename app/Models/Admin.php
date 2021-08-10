@@ -10,4 +10,5 @@ class Admin extends Model
     use HasFactory;
 
     protected $table = "admin";
+    public $timestamps = false;
 }

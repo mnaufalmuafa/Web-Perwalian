@@ -25,6 +25,7 @@ Route::get('/form2', [App\Http\Controllers\dosen\FormController::class, 'form2']
 
 Route::middleware(['IsAdminNotLogin'])->group(function() {
     Route::get('/choose_user', [ChooseUserController::class, 'index']);
+    Route::get('/edit_password', [App\Http\Controllers\AdminController::class, 'editPassword']);
     Route::get('/login_admin', [AdminController::class, 'login'])->name('login_admin');
 });
 
@@ -67,6 +68,7 @@ Route::prefix('api')->group(function(){
         });
         Route::prefix('admin')->group(function() {
             Route::get('/check_login', [App\Http\Controllers\api\AdminController::class, 'getCheckLoginAdmin']);
+            Route::get('/is_password_true', [App\Http\Controllers\api\AdminController::class, 'isPasswordTrue']);
         });
         Route::prefix('generation')->group(function() {
             Route::get('/for_data_kelas', [App\Http\Controllers\api\GenerationController::class, 'getGenerationFordataKelasPage']);
@@ -95,6 +97,7 @@ Route::prefix('api')->group(function(){
         });
         Route::prefix('admin')->group(function(){
             Route::get('logout', [App\Http\Controllers\api\AdminController::class, 'logout']);
+            Route::post('change_password', [App\Http\Controllers\api\AdminController::class, 'changePassword']);
         });
     });
 });

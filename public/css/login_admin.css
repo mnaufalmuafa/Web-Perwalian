@@ -71,3 +71,8 @@ small {
 .hidden-small {
     display: none;
 }
+
+form a {
+    color: blue;
+    text-decoration: underline;
+}

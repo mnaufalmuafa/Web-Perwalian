@@ -30,6 +30,7 @@
                     <br>
                     <small class="hidden-small">Username atau password salah</small>
                     <button type="submit">Login</button>
+                    <a href="/edit_password">Ganti Password</a>
                 </form>
             </main>
         </article>

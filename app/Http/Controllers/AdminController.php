@@ -98,4 +98,9 @@ class AdminController extends Controller
         // dd($data);
         return view('pages.admin.update_mahasiswa', $data);
     }
+
+    public function editPassword()
+    {
+        return view('pages.change_password');
+    }
 }
