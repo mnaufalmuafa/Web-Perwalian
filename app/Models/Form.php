@@ -19,4 +19,9 @@ class Form extends Model
                     ->join('sub_form', 'form.id', '=', 'sub_form.form_id')
                     ->where('sequence', $sequence);
     }
+
+    public static function getTitle($sequence)
+    {
+        return DB::table("form")->where('sequence', $sequence)->pluck('name')[0];
+    }
 }

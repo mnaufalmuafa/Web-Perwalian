@@ -21,7 +21,9 @@ Route::get('/', function()
 });
 
 Route::get('/beranda', [App\Http\Controllers\dosen\HomeController::class, 'index']);
+Route::get('/form1', [App\Http\Controllers\dosen\FormController::class, 'form1']);
 Route::get('/form2', [App\Http\Controllers\dosen\FormController::class, 'form2']);
+Route::get('/form3', [App\Http\Controllers\dosen\FormController::class, 'form3']);
 
 Route::middleware(['IsAdminNotLogin'])->group(function() {
     Route::get('/choose_user', [ChooseUserController::class, 'index']);

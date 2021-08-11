@@ -1,11 +1,15 @@
 @extends('layouts.dosen')
 
+@section('add-on-meta')
+    <meta name="form_sequence" content="{{ $sequence }}">
+@endsection
+
 @section('add-on-style')
-    <link rel="stylesheet" href="{{ url('css/pages/dosen/form2.css') }}">
+    <link rel="stylesheet" href="{{ url('css/pages/dosen/form.css') }}">
 @endsection
 
 @section('title')
-    Form 2
+    {{ $title }}
 @endsection
 
 @section('content')
@@ -13,7 +17,7 @@
         <form>
             <article class="heading1Article headingArticle">
                 <header></header>
-                <h1>Berita Acara Perwalian ke-2</h1>
+                <h1>{{ $form_name }}</h1>
             </article>
             
             <!-- Kode Dosen -->
@@ -138,5 +142,5 @@
 @endsection
 
 @section('add-on-script')
-    <script type="text/javascript" src="{{ url('/javascript/pages/dosen/form2.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/javascript/pages/dosen/form.js') }}"></script>
 @endsection

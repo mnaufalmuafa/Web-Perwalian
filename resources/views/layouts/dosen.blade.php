@@ -3,6 +3,7 @@
 <head>
     @include('includes.meta')
     @include('includes.style.dosen')
+    @yield('add-on-meta')
     @yield('add-on-style')
     <title>@yield('title')</title>
 </head>

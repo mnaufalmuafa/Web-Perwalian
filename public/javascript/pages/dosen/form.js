@@ -1,6 +1,7 @@
 var form2 = new Vue({
     el : "main",
     data : {
+        formSequence : 0,
         dataDosen : null,
         selectedLecturerId : 0,
         arrClass : [],
@@ -22,10 +23,8 @@ var form2 = new Vue({
                 .then(response => response.json())
                 .then(data => this.assignData(data));
 
-            this.selectedLecturerId = this.getUrlVars()["lecturer_id"];
-            this.selectedClassId = this.getUrlVars()["class_id"];
-            this.selectedSemester = this.getUrlVars()["semester"];
-            this.selectedSchoolYearId = this.getUrlVars()["school_year_id"];
+            this.assignDataFromURL();
+            this.formSequence = parseInt(document.getElementsByName("form_sequence")[0].getAttribute("content"));
 
             if (this.selectedLecturerId !== 0) {
                 this.setupSelectedLecturer();
@@ -38,6 +37,12 @@ var form2 = new Vue({
             if ( historyTraversal ) {
                 window.location.reload();
             }
+        },
+        assignDataFromURL : function() {
+            this.selectedLecturerId = this.getUrlVars()["lecturer_id"];
+            this.selectedClassId = this.getUrlVars()["class_id"];
+            this.selectedSemester = this.getUrlVars()["semester"];
+            this.selectedSchoolYearId = this.getUrlVars()["school_year_id"];
         },
         fetchSchoolYear : function() {
             fetch("/api/get/school_year/all")
@@ -69,13 +74,13 @@ var form2 = new Vue({
             return data;
         },
         selectLecturerOnChange : function() {
-            window.location.href = "/form2?lecturer_id="+this.selectedLecturerId+"&class_id=0&school_year_id="+this.selectedSchoolYearId+"&semester="+this.selectedSemester;
+            window.location.href = "/form"+this.formSequence+"?lecturer_id="+this.selectedLecturerId+"&class_id=0&school_year_id="+this.selectedSchoolYearId+"&semester="+this.selectedSemester;
         },
         selectClassOnChange : function() {
-            window.location.href = "/form2?lecturer_id="+this.selectedLecturerId+"&class_id="+this.selectedClassId+"&school_year_id="+this.selectedSchoolYearId+"&semester="+this.selectedSemester;
+            window.location.href = "/form"+this.formSequence+"?lecturer_id="+this.selectedLecturerId+"&class_id="+this.selectedClassId+"&school_year_id="+this.selectedSchoolYearId+"&semester="+this.selectedSemester;
         },
         reloadWithUpdatedValue : function() {
-            window.location.href = "/form2?lecturer_id="+this.selectedLecturerId+"&class_id="+this.selectedClassId+"&school_year_id="+this.selectedSchoolYearId+"&semester="+this.selectedSemester;
+            window.location.href = "/form"+this.formSequence+"?lecturer_id="+this.selectedLecturerId+"&class_id="+this.selectedClassId+"&school_year_id="+this.selectedSchoolYearId+"&semester="+this.selectedSemester;
         },
         rbSemesterOnChange : function(event) {
             var data = event.target.value;
