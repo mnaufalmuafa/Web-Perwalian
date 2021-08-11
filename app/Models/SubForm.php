@@ -9,4 +9,25 @@ use Illuminate\Support\Facades\DB;
 class SubForm extends Model
 {
     use HasFactory;
+
+    public static function getFormQuestion($sequence)
+    {
+        $subForms = DB::table('sub_form')
+                        ->join('form', 'sub_form.form_id', '=', 'form.id')
+                        ->where('form.sequence', $sequence)
+                        ->where('sub_form.is_deleted', 0)
+                        ->select(
+                            'sub_form.id',
+                            'sub_form.name',
+                            'sub_form.sequence'
+                        )
+                        ->orderBy('sub_form.sequence')
+                        ->get();
+
+        foreach ($subForms as $subForm) {
+            $subForm->question = Question::getQuestionBySubForm($subForm->id);
+        }
+
+        return $subForms;
+    }
 }
