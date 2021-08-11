@@ -110,7 +110,7 @@ var form2 = new Vue({
                 .then(this.fetchQuestion);
         },
         fetchQuestion : function() {
-            fetch("http://127.0.0.1:8000/api/get/question/form?sequence=2")
+            fetch("http://127.0.0.1:8000/api/get/question/form?sequence="+this.formSequence)
                 .then(response => response.json())
                 .then(data => this.arrQuestions = data);
         }

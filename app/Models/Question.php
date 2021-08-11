@@ -15,22 +15,62 @@ class Question extends Model
 
     public static function getFormQuestion($sequence)
     {
-        $questions = DB::table("question")
-                            ->join('sub_form', 'question.sub_form_id', '=', 'sub_form.id')
-                            ->join('form', 'sub_form.form_id', '=', 'form.id')
-                            ->where('form.sequence', $sequence)
-                            ->select(
-                                'question.id',
-                                'question.sequence',
-                                'question.question_type_id'
-                            )
-                            ->addSelect(DB::raw('sub_form.id as sub_form_id'))
-                            ->addSelect(DB::raw('sub_form.name as sub_form_name'))
-                            ->get();
-        
-        foreach ($questions as $question) {
-            $question->hint = "hint";
+        $subForms = DB::table('sub_form')
+                        ->join('form', 'sub_form.form_id', '=', 'form.id')
+                        ->where('form.sequence', $sequence)
+                        ->where('sub_form.is_deleted', 0)
+                        ->select(
+                            'sub_form.id',
+                            'sub_form.name',
+                            'sub_form.sequence'
+                        )
+                        ->orderBy('sub_form.sequence')
+                        ->get();
+
+        foreach ($subForms as $subForm) {
+            $subForm->question = Question::getQuestionBySubForm($subForm->id);
         }
-        return $questions;
+
+        return $subForms;
+    }
+
+    private static function getQuestionBySubForm($subFormId)
+    {
+        $questions = DB::table('question')
+                            ->where('is_deleted', 0)
+                            ->where('sub_form_id', $subFormId)
+                            ->orderBy('sequence')
+                            ->get();
+        $arrQuestion = [];
+        foreach($questions as $question) {
+
+            $questionData = [
+                "id" => $question->id,
+                "sequence" => $question->sequence,
+                "question_type" => $question->question_type_id,
+            ];
+
+            if ($questionData["question_type"] == 5) { // short answer
+                $tableName = "question_short_answer";
+                $questionId = $question->id;
+                $questionData["title"] = Question::getTextQuestionColumn($tableName, $questionId, "title");
+                $questionData["hint"] = Question::getTextQuestionColumn($tableName, $question->id, "hint");
+            }
+            else if ($questionData["question_type"] == 6) { // long answer
+                $tableName = "question_long_answer";
+                $questionId = $question->id;
+                $questionData["title"] = Question::getTextQuestionColumn($tableName, $questionId, "title");
+                $questionData["hint"] = Question::getTextQuestionColumn($tableName, $question->id, "hint");
+            }
+
+            array_push($arrQuestion, $questionData);
+        }
+
+        return $arrQuestion;
+    }
+
+    private static function getTextQuestionColumn(String $table, int $id, String $column)
+    {
+        return DB::table($table)->where('id', $id)->pluck($column)[0];
     }
 }
