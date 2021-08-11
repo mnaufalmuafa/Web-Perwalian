@@ -2,11 +2,11 @@ form {
     padding-bottom: 10px;
 }
 
-form > article {
+form article {
     border: 1px solid black;
 }
 
-form > article, table {
+form article, table {
     width: 90%;
     margin-left: auto;
     margin-right: auto;

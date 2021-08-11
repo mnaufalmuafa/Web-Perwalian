@@ -106,21 +106,21 @@
                 </tbody>
             </table>
             
-            <!-- <article class="heading2Article headingArticle">
-                <header></header>
-                <h2>Perwalian mahasiswa angkatan 2020</h2>
-            </article>
+            <section v-for="(subform, indexSubForm) in arrQuestions">
+                <article class="heading2Article headingArticle">
+                    <header></header>
+                    <h2>@{{ subform.name }}</h2>
+                </article>
 
-            <article class="ordinaryArticle">
-                <p>Pertanyaan 1</p>
-                <input type="text" placeholder="Hint...">
-            </article>
+                <article class="ordinaryArticle" v-for="question in subform.question">
+                    <p>@{{ question.title }}</p>
+                    <input type="file" accept=".pdf, .png, .jpg, .jpeg, .svg" v-if="question.question_type == 3">
+                    <input type="text" :placeholder="question.hint" v-if="question.question_type == 5">
+                    <textarea rows="3" placeholder="Hint..." v-if="question.question_type == 6"></textarea>
+                </article>
+            </section>
 
-            <article class="ordinaryArticle">
-                <p>Pertanyaan 2</p>
-                <textarea rows="3" placeholder="Hint..."></textarea>
-            </article>
-
+            <!--
             <article class="ordinaryArticle">
                 <p>Pertanyaan 3</p>
                 <select>
@@ -128,11 +128,6 @@
                     <option>Pilihan 2</option>
                     <option>Pilihan 3</option>
                 </select>
-            </article>
-
-            <article class="ordinaryArticle">
-                <p>Pertanyaan 4</p>
-                <input type="file">
             </article> -->
 
             <button type="submit" class="btn">Submit</button>

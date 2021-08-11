@@ -50,7 +50,12 @@ class Question extends Model
                 "question_type" => $question->question_type_id,
             ];
 
-            if ($questionData["question_type"] == 5) { // short answer
+            if ($questionData["question_type"] == 3) { // short answer
+                $tableName = "question_upload_file";
+                $questionId = $question->id;
+                $questionData["title"] = Question::getTextQuestionColumn($tableName, $questionId, "title");
+            }
+            else if ($questionData["question_type"] == 5) { // short answer
                 $tableName = "question_short_answer";
                 $questionId = $question->id;
                 $questionData["title"] = Question::getTextQuestionColumn($tableName, $questionId, "title");
