@@ -19,7 +19,9 @@ class SubForm extends Model
                         ->select(
                             'sub_form.id',
                             'sub_form.name',
-                            'sub_form.sequence'
+                            'sub_form.sequence',
+                            'sub_form.min_generation_id',
+                            'sub_form.max_generation_id',
                         )
                         ->orderBy('sub_form.sequence')
                         ->get();

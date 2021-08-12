@@ -90,6 +90,12 @@ class KelasController extends Controller
 
     public function getGenerationId(Request $request)
     {
-        return Kelas::where('id', $request->class_id)->pluck('generation_id')[0];
+        $queryResult = Kelas::where('id', $request->class_id)->pluck('generation_id');
+        if ($queryResult[0] == null) {
+            return 0;
+        }
+        else {
+            return Kelas::where('id', $request->class_id)->pluck('generation_id')[0];
+        }
     }
 }

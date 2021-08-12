@@ -112,7 +112,10 @@
                     <h2>@{{ subform.name }}</h2>
                 </article>
 
-                <article class="ordinaryArticle" v-for="question in subform.question">
+                <article 
+                    class="ordinaryArticle" 
+                    v-for="question in subform.question"
+                    >
                     <p>@{{ question.title }}</p>
                     <input type="file" accept=".pdf, .png, .jpg, .jpeg, .svg" v-if="question.question_type == 3">
                     <input type="text" :placeholder="question.hint" v-if="question.question_type == 5">
