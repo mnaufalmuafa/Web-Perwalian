@@ -88,6 +88,12 @@
                 for="RBSemesterGenap">Genap</label>
             </article>
             
+            <p 
+                class="errorMessage" 
+                v-if="selectedClassId != 0 && !(arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0)">
+                Tidak ada mahasiswa yang terdaftar di kelas
+            </p>
+
             <table cellspacing="0" v-if="arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0">
                 <thead>
                     <tr>
@@ -104,7 +110,7 @@
                         <td>@{{ student.nim }}</td>
                         <td>@{{ student.name }}</td>
                         <td>
-                            <input type="radio" :name="'presence'+student.nim" value="Hadir">
+                            <input type="radio" :name="'presence'+student.nim" value="Hadir" required>
                             <label>Hadir</label>
                             <br>
                             <input type="radio" :name="'presence'+student.nim" value="Tidak Hadir">
@@ -117,7 +123,7 @@
             
             <section 
                 v-for="(subform, indexSubForm) in arrQuestions"
-                v-if="selectedClassGenerationId >= subform.min_generation_id && selectedClassGenerationId <= subform.max_generation_id">
+                v-if="selectedClassGenerationId >= subform.min_generation_id && selectedClassGenerationId <= subform.max_generation_id && arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0">
                 <article class="heading2Article headingArticle">
                     <header></header>
                     <h2>@{{ subform.name }}</h2>
@@ -127,21 +133,11 @@
                     class="ordinaryArticle" 
                     v-for="question in subform.question">
                     <p>@{{ question.title }}</p>
-                    <input type="file" accept=".pdf, .png, .jpg, .jpeg, .svg" v-if="question.question_type == 3">
-                    <input type="text" :placeholder="question.hint" v-if="question.question_type == 5">
-                    <textarea rows="3" :placeholder="question.hint" v-if="question.question_type == 6"></textarea>
+                    <input type="file" accept=".pdf, .png, .jpg, .jpeg, .svg" v-if="question.question_type == 3" required>
+                    <input type="text" :placeholder="question.hint" v-if="question.question_type == 5" required>
+                    <textarea rows="3" :placeholder="question.hint" v-if="question.question_type == 6" required></textarea>
                 </article>
             </section>
-
-            <!--
-            <article class="ordinaryArticle">
-                <p>Pertanyaan 3</p>
-                <select>
-                    <option>Pilihan 1</option>
-                    <option>Pilihan 2</option>
-                    <option>Pilihan 3</option>
-                </select>
-            </article> -->
 
             <button type="submit" class="btn">Submit</button>
             <div class="clear"></div>
