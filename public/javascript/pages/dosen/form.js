@@ -12,6 +12,7 @@ var form2 = new Vue({
         selectedSchoolYearId : 0,
         selectedSemester : "Ganjil",
         arrQuestions : [],
+        isNoFormAvailable : false,
     },
     created : function() {
         window.addEventListener("pageshow", this.onpageshow);

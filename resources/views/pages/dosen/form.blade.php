@@ -31,8 +31,11 @@
                 </select>
             </article>
             
-            <p class="errorMessage" v-if="(arrClass === null || arrClass.length == 0) && selectedLecturerId != 0">Anda tidak memiliki kelas wali</p>
-            <p class="info" id="fetchingClass">Fetching data...</p>
+            <p 
+                class="errorMessage" 
+                v-if="(arrClass === null || arrClass.length == 0) && selectedLecturerId != 0">
+                Anda tidak memiliki kelas wali
+            </p>
             
             <!-- Kelas -->
             <article class="ordinaryArticle" v-if="selectedLecturerId != 0 && arrClass !== null && arrClass.length > 0">
@@ -45,8 +48,14 @@
                 </select>
             </article>
 
+            <p 
+                class="errorMessage" 
+                v-if="selectedClassId != 0 && selectedClassGenerationId === 0">
+                Tahun angkatan kelas tidak diketahui
+            </p>
+
             <!-- Tahun Ajaran -->
-            <article class="ordinaryArticle" v-if="selectedLecturerId !== 0 && arrClass.length > 0 && selectedClassId != 0">
+            <article class="ordinaryArticle" v-if="selectedLecturerId !== 0 && arrClass.length > 0 && selectedClassId != 0 && selectedClassGenerationId !== 0">
                 <p>Tahun Ajaran</p>
                 <select
                     v-model="selectedSchoolYearId"
@@ -56,7 +65,7 @@
             </article>
 
             <!-- Semester -->
-            <article class="ordinaryArticle" v-if="selectedLecturerId !== 0 && arrClass.length > 0  && selectedClassId != 0">
+            <article class="ordinaryArticle" v-if="selectedLecturerId !== 0 && arrClass.length > 0  && selectedClassId != 0 && selectedClassGenerationId !== 0">
                 <p>Semester</p>
                 <input 
                     type="radio" 
@@ -79,7 +88,7 @@
                 for="RBSemesterGenap">Genap</label>
             </article>
             
-            <table cellspacing="0" v-if="arrStudent !== null && arrStudent.length > 0">
+            <table cellspacing="0" v-if="arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -106,7 +115,9 @@
                 </tbody>
             </table>
             
-            <section v-for="(subform, indexSubForm) in arrQuestions">
+            <section 
+                v-for="(subform, indexSubForm) in arrQuestions"
+                v-if="selectedClassGenerationId >= subform.min_generation_id && selectedClassGenerationId <= subform.max_generation_id">
                 <article class="heading2Article headingArticle">
                     <header></header>
                     <h2>@{{ subform.name }}</h2>
@@ -114,8 +125,7 @@
 
                 <article 
                     class="ordinaryArticle" 
-                    v-for="question in subform.question"
-                    >
+                    v-for="question in subform.question">
                     <p>@{{ question.title }}</p>
                     <input type="file" accept=".pdf, .png, .jpg, .jpeg, .svg" v-if="question.question_type == 3">
                     <input type="text" :placeholder="question.hint" v-if="question.question_type == 5">
