@@ -88,18 +88,8 @@ class KelasController extends Controller
         return Kelas::where('homeroom_id', $request->homeroom_id)->get();
     }
 
-    public function getGenerationYear(Request $request)
+    public function getGenerationId(Request $request)
     {
-        $queryResult = DB::table('class')
-                            ->join('generation', 'class.generation_id', '=', 'generation.id')
-                            ->where('class.id', $request->class_id)
-                            ->pluck('generation.generation');
-        
-        if (count($queryResult) == 0) {
-            return null;
-        }
-        else {
-            return $queryResult[0];
-        }
+        return Kelas::where('id', $request->class_id)->pluck('generation_id')[0];
     }
 }
