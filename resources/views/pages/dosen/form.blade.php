@@ -116,7 +116,7 @@
                     <p>@{{ question.title }}</p>
                     <input type="file" accept=".pdf, .png, .jpg, .jpeg, .svg" v-if="question.question_type == 3">
                     <input type="text" :placeholder="question.hint" v-if="question.question_type == 5">
-                    <textarea rows="3" placeholder="Hint..." v-if="question.question_type == 6"></textarea>
+                    <textarea rows="3" :placeholder="question.hint" v-if="question.question_type == 6"></textarea>
                 </article>
             </section>
 

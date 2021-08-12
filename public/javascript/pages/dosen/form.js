@@ -6,6 +6,7 @@ var form2 = new Vue({
         selectedLecturerId : 0,
         arrClass : [],
         selectedClassId : 0,
+        selectedClassGeneration : null,
         arrStudent : null,
         arrSchoolYear : [],
         selectedSchoolYearId : 0,
@@ -107,6 +108,12 @@ var form2 = new Vue({
             fetch("/api/get/mahasiswa/for_form_page?class_id="+this.selectedClassId)
                 .then(response => response.json())
                 .then(data => this.arrStudent = data)
+                .then(this.fetchClassGeneration);
+        },
+        fetchClassGeneration() {
+            fetch("/api/get/kelas/get_generation_year?class_id="+this.selectedClassId)
+                .then(response => response.json())
+                .then(data => this.selectedClassGeneration = data)
                 .then(this.fetchQuestion);
         },
         fetchQuestion : function() {

@@ -62,6 +62,7 @@ Route::prefix('api')->group(function(){
             Route::get('/data_kelas_page', [App\Http\Controllers\api\KelasController::class, 'getDataForKelasDataPage']);
             Route::get('/input_mahasiswa_page', [App\Http\Controllers\api\KelasController::class, 'getDataForInputMahasiswaPage']);
             Route::get('/by_homeroomid', [App\Http\Controllers\api\KelasController::class, 'getKelasByLecturerId']);
+            Route::get('/get_generation_year', [App\Http\Controllers\api\KelasController::class, 'getGenerationYear']);
         });
         Route::prefix('mahasiswa')->group(function() {
             Route::get('/count', [App\Http\Controllers\api\MahasiswaController::class, 'getMahasiswaCount']);
