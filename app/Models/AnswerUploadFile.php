@@ -16,7 +16,7 @@ class AnswerUploadFile extends Model
     public static function store($questionId, $fileName, $uploadFolderNameId)
     {
         $auf = new AnswerUploadFile();
-        $auf->id = 3;
+        $auf->id = $questionId;
         $aufId = $auf->id;
         $auf->file_name = $fileName;
         $auf->upload_folder_name_id = $uploadFolderNameId;
