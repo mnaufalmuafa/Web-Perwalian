@@ -36,4 +36,15 @@ class Mahasiswa extends Model
         $student = Mahasiswa::find($id);
         return $student->class_id;
     }
+
+    public static function getIdByNIM($nim)
+    {
+        $student = Mahasiswa::where("nim", $nim)->pluck("id");
+        return $student[0];
+    }
+
+    public static function getByClassId($classId)
+    {
+        return Mahasiswa::where('class_id', $classId)->get();
+    }
 }

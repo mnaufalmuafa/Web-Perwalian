@@ -129,6 +129,7 @@
                 </tbody>
             </table>
             
+            <!-- Pertanyaan -->
             <section 
                 v-for="(subform, indexSubForm) in arrQuestions"
                 v-if="selectedClassGenerationId >= subform.min_generation_id && selectedClassGenerationId <= subform.max_generation_id && arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0">

@@ -20,7 +20,7 @@ Route::get('/', function()
     return redirect('choose_user');
 });
 
-Route::get('/beranda', [App\Http\Controllers\dosen\HomeController::class, 'index']);
+Route::get('/beranda', [App\Http\Controllers\dosen\HomeController::class, 'index'])->name('beranda-dosen');
 Route::get('/form1', [App\Http\Controllers\dosen\FormController::class, 'form1']);
 Route::get('/form2', [App\Http\Controllers\dosen\FormController::class, 'form2']);
 Route::get('/form3', [App\Http\Controllers\dosen\FormController::class, 'form3']);

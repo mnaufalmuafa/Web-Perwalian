@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\AnswerQuestion;
 use App\Models\AnswerText;
 use App\Models\AnswerUploadFile;
+use App\Models\Attedance;
 use App\Models\Fill;
 use App\Models\FormAnswer;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class FillController extends Controller
@@ -15,18 +17,32 @@ class FillController extends Controller
     public function fill(Request $request)
     {
         $formAnswerId = FormAnswer::storeNew(); // Membuat data form_answer
+        $classId = $request->class_id;
 
         // Membuat data fill
         $fillData = [
             "lecturer_id" => $request->lecturer_id,
             "form_id" => $request->form_id,
             "form_answer_id" => $formAnswerId,
-            "class_id" => $request->class_id,
+            "class_id" => $classId,
             "school_year_id" => $request->school_year_id,
             "semester" => $request->semester
         ];
         Fill::store($fillData); // menyimpan fill
 
+        // Menyimpan presensi
+        $students = Mahasiswa::getByClassId($classId);
+        foreach($students as $student) {
+            if (isset($request['presence'.$student->nim])) {
+                $studentId = Mahasiswa::getIdByNIM($student->nim);
+                $presence = $request['presence'.$student->nim];
+                $note = $request['keterangan'.$student->nim];
+                $note = $note == null ? "" : $note;
+                Attedance::store($studentId, $formAnswerId, $presence, $note);
+            }
+        }
+
+        // Menyimpan jawaban
         $questionIndex = 0;
         while (isset($request["question".$questionIndex])) {
             $qt = $request["question".$questionIndex."_type_id"];
@@ -38,7 +54,7 @@ class FillController extends Controller
                 $nama_berkas = $berkas->getClientOriginalName(); // menyimpan nama berkas
 
                 $fileId = AnswerUploadFile::store($aqId, $nama_berkas, $uploadFolderNameId); // menyimpan data answer_upload_file dan menyimpan id-nya
-                echo $fileId;
+                // echo $fileId;
                 $tujuan_upload = 'upload/'.$folderName.'/'.$fileId; // folder tujuan upload berkas
                 $berkas->move($tujuan_upload,$nama_berkas); // upload berkas
             }
@@ -48,6 +64,6 @@ class FillController extends Controller
             $questionIndex++;
         }
 
-        // return $request;
+        return redirect()->route('beranda-dosen');
     }
 }
