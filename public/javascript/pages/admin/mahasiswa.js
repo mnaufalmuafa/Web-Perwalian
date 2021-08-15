@@ -9,6 +9,9 @@ var kelasPage = new Vue({
     filters : {
         showClass : function(kelas) {
             return kelas == null ? "-" : kelas;
+        },
+        showStatus : function(status) {
+            return status.replace(/([a-z])([A-Z])/g, `$1 $2`);
         }
     },
     methods : {
