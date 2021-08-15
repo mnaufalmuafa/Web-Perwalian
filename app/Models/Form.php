@@ -24,4 +24,9 @@ class Form extends Model
     {
         return DB::table("form")->where('sequence', $sequence)->pluck('name')[0];
     }
+
+    public static function getId($sequence)
+    {
+        return DB::table("form")->where('sequence', $sequence)->pluck('id')[0];
+    }
 }

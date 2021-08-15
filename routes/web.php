@@ -105,5 +105,8 @@ Route::prefix('api')->group(function(){
             Route::get('logout', [App\Http\Controllers\api\AdminController::class, 'logout']);
             Route::post('change_password', [App\Http\Controllers\api\AdminController::class, 'changePassword']);
         });
+        Route::prefix('form')->group(function(){
+            Route::post("fill", [App\Http\Controllers\api\FillController::class, 'fill']);
+        });
     });
 });

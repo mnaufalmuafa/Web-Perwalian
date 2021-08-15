@@ -14,8 +14,12 @@
 
 @section('content')
     <main>
-        <form>
+        <form
+            method="POST"
+            action="api/post/form/fill"
+            enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="form_id" value="{{ $id }}">
             <article class="heading1Article headingArticle">
                 <header></header>
                 <h1>{{ $form_name }}</h1>
@@ -26,7 +30,8 @@
                 <p>Kode Dosen</p>
                 <select
                     v-model="selectedLecturerId"
-                    @change="selectLecturerOnChange()">
+                    @change="selectLecturerOnChange()"
+                    name="lecturer_id">
                     <option value="0">-- Kode Dosen --</option>
                     <option v-for="(d, index) in dataDosen" :value="d.id">@{{ d.lecturer_code }}</option>
                 </select>
@@ -43,7 +48,8 @@
                 <p>Pilih Kelas</p>
                 <select
                     v-model="selectedClassId"
-                    @change="selectClassOnChange()">
+                    @change="selectClassOnChange()"
+                    name="class_id">
                     <option value="0">-- Kelas --</option>
                     <option v-for="(k, index) in arrClass" :value="k.id">@{{ k.name }}</option>
                 </select>
@@ -60,7 +66,8 @@
                 <p>Tahun Ajaran</p>
                 <select
                     v-model="selectedSchoolYearId"
-                    @change="reloadWithUpdatedValue()">
+                    @change="reloadWithUpdatedValue()"
+                    name="school_year_id">
                     <option v-for="(ta, index) in arrSchoolYear" :value="ta.id">@{{ ta.first_year + '/' + ta.second_year }}</option>
                 </select>
             </article>
@@ -117,7 +124,7 @@
                             <input type="radio" :name="'presence'+student.nim" value="Tidak Hadir">
                             <label>Tidak Hadir</label>
                         </td>
-                        <td><input type="text" name="'keterangan'+student.nim" value=""></td>
+                        <td><input type="text" :name="'keterangan'+student.nim" value=""></td>
                     </tr>
                 </tbody>
             </table>
@@ -154,6 +161,11 @@
                         v-if="question.question_type == 6"
                         :name="'question' + questionIndex" 
                         required></textarea>
+
+                    <input 
+                        type="hidden" 
+                        :name="'question' + questionIndex + '_type_id'"
+                        :value="question.question_type">
                 </article>
             </section>
 
