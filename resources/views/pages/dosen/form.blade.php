@@ -15,6 +15,7 @@
 @section('content')
     <main>
         <form>
+            @csrf
             <article class="heading1Article headingArticle">
                 <header></header>
                 <h1>{{ $form_name }}</h1>
@@ -116,7 +117,7 @@
                             <input type="radio" :name="'presence'+student.nim" value="Tidak Hadir">
                             <label>Tidak Hadir</label>
                         </td>
-                        <td><input type="text" name="keterangan" value=""></td>
+                        <td><input type="text" name="'keterangan'+student.nim" value=""></td>
                     </tr>
                 </tbody>
             </table>
@@ -131,15 +132,37 @@
 
                 <article 
                     class="ordinaryArticle" 
-                    v-for="question in subform.question">
+                    v-for="(question, questionIndex) in subform.question">
                     <p>@{{ question.title }}</p>
-                    <input type="file" accept=".pdf, .png, .jpg, .jpeg, .svg" v-if="question.question_type == 3" required>
-                    <input type="text" :placeholder="question.hint" v-if="question.question_type == 5" required>
-                    <textarea rows="3" :placeholder="question.hint" v-if="question.question_type == 6" required></textarea>
+                    <input 
+                        type="file" 
+                        accept=".pdf, .png, .jpg, .jpeg, .svg, .zip, .rar, .tgz" 
+                        v-if="question.question_type == 3" 
+                        :name="'question' + questionIndex"
+                        required>
+                    
+                    <input 
+                        type="text" 
+                        :placeholder="question.hint" 
+                        v-if="question.question_type == 5" 
+                        :name="'question' + questionIndex"
+                        required>
+                    
+                    <textarea 
+                        rows="3" 
+                        :placeholder="question.hint" 
+                        v-if="question.question_type == 6"
+                        :name="'question' + questionIndex" 
+                        required></textarea>
                 </article>
             </section>
 
-            <button type="submit" class="btn">Submit</button>
+            <button 
+                type="submit" 
+                class="btn"
+                v-if="arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0 && arrQuestions.length > 0">
+                Submit
+            </button>
             <div class="clear"></div>
         </form>
     </main>
