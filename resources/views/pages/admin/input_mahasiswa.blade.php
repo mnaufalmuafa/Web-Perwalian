@@ -25,6 +25,7 @@
             <select name="status" id="inputStatus">
                 <option value="Aktif">Aktif</option>
                 <option value="TidakAktif">Tidak Aktif</option>
+                <option value="Cuti">Cuti</option>
             </select>
 
             <label for="inputClassId">Kelas</label>
