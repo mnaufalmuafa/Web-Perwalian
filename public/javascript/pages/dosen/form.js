@@ -1,6 +1,15 @@
-var form2 = new Vue({
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+var form = new Vue({
     el : "main",
     data : {
+        formId : 0,
         formSequence : 0,
         dataDosen : null,
         selectedLecturerId : 0,
@@ -13,9 +22,20 @@ var form2 = new Vue({
         selectedSemester : "Ganjil",
         arrQuestions : [],
         isNoFormAvailable : false,
+        formHasBeenFilled : false,
     },
     created : function() {
         window.addEventListener("pageshow", this.onpageshow);
+    },
+    filters : {
+        formHasBeenFilledText : function() {
+            const selectClass = document.getElementById("selectClass");
+            const selectedClassName = selectClass.options[selectClass.selectedIndex].text;
+
+            const selectTahunAjaran = document.getElementById("selectTahunAjaran");
+            const selectTahunAjaranName = selectTahunAjaran.options[selectTahunAjaran.selectedIndex].text;
+            return "Form untuk kelas "+selectedClassName+" pada semester "+getUrlVars()["semester"]+" tahun ajaran "+selectTahunAjaranName+" sudah diisi";
+        },
     },
     methods : {
         onpageshow : function(event) {
@@ -26,7 +46,7 @@ var form2 = new Vue({
                 .then(data => this.assignData(data));
 
             this.assignDataFromURL();
-            this.formSequence = parseInt(document.getElementsByName("form_sequence")[0].getAttribute("content"));
+            this.assignDataFromMeta();
 
             if (this.selectedLecturerId !== 0) {
                 this.setupSelectedLecturer();
@@ -45,6 +65,10 @@ var form2 = new Vue({
             this.selectedClassId = this.getUrlVars()["class_id"];
             this.selectedSemester = this.getUrlVars()["semester"];
             this.selectedSchoolYearId = this.getUrlVars()["school_year_id"];
+        },
+        assignDataFromMeta : function() {
+            this.formId = parseInt(document.getElementsByName("form_id")[0].getAttribute("content"));
+            this.formSequence = parseInt(document.getElementsByName("form_sequence")[0].getAttribute("content"));
         },
         fetchSchoolYear : function() {
             fetch("/api/get/school_year/all")
@@ -111,10 +135,21 @@ var form2 = new Vue({
                 .then(data => this.arrStudent = data)
                 .then(this.fetchClassGeneration);
         },
-        fetchClassGeneration() {
+        fetchClassGeneration: function() {
             fetch("/api/get/kelas/get_generation_id?class_id="+this.selectedClassId)
                 .then(response => response.json())
                 .then(data => this.selectedClassGenerationId = data)
+                .then(this.fetchFillStatus);
+        },
+        fetchFillStatus : function(){
+            fetch("/api/get/fill/check_fill_exist?"
+                    +"lecturer_id="+this.selectedLecturerId
+                    +"&form_id="+this.formId
+                    +"&class_id="+this.selectedClassId
+                    +"&school_year_id="+this.selectedSchoolYearId
+                    +"&semester="+this.selectedSemester)
+                .then(response => response.json())
+                .then(data => this.formHasBeenFilled = data)
                 .then(this.fetchQuestion);
         },
         fetchQuestion : function() {

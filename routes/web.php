@@ -83,6 +83,9 @@ Route::prefix('api')->group(function(){
         Route::prefix('question')->group(function() {
             Route::get('form', [App\Http\Controllers\api\SubFormController::class, 'getFormQuestion']);
         });
+        Route::prefix('fill')->group(function() {
+            Route::get('check_fill_exist', [App\Http\Controllers\api\FillController::class, "checkFillExist"]);
+        });
     });
 
     Route::prefix('post')->group(function() {

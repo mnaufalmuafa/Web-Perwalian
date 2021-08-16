@@ -1,6 +1,7 @@
 @extends('layouts.dosen')
 
 @section('add-on-meta')
+    <meta name="form_id" content="{{ $id }}">
     <meta name="form_sequence" content="{{ $sequence }}">
 @endsection
 
@@ -49,7 +50,8 @@
                 <select
                     v-model="selectedClassId"
                     @change="selectClassOnChange()"
-                    name="class_id">
+                    name="class_id"
+                    id="selectClass">
                     <option value="0">-- Kelas --</option>
                     <option v-for="(k, index) in arrClass" :value="k.id">@{{ k.name }}</option>
                 </select>
@@ -67,7 +69,8 @@
                 <select
                     v-model="selectedSchoolYearId"
                     @change="reloadWithUpdatedValue()"
-                    name="school_year_id">
+                    name="school_year_id"
+                    id="selectTahunAjaran">
                     <option v-for="(ta, index) in arrSchoolYear" :value="ta.id">@{{ ta.first_year + '/' + ta.second_year }}</option>
                 </select>
             </article>
@@ -102,7 +105,13 @@
                 Tidak ada mahasiswa yang terdaftar di kelas
             </p>
 
-            <table cellspacing="0" v-if="arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0">
+            <p 
+                class="errorMessage" 
+                v-if="formHasBeenFilled">
+                @{{ | formHasBeenFilledText }}
+            </p>
+
+            <table cellspacing="0" v-if="arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0 && !formHasBeenFilled">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -132,7 +141,7 @@
             <!-- Pertanyaan -->
             <section 
                 v-for="(subform, indexSubForm) in arrQuestions"
-                v-if="selectedClassGenerationId >= subform.min_generation_id && selectedClassGenerationId <= subform.max_generation_id && arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0">
+                v-if="selectedClassGenerationId >= subform.min_generation_id && selectedClassGenerationId <= subform.max_generation_id && arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0 && !formHasBeenFilled">
                 <article class="heading2Article headingArticle">
                     <header></header>
                     <h2>@{{ subform.name }}</h2>
@@ -173,7 +182,7 @@
             <button 
                 type="submit" 
                 class="btn"
-                v-if="arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0 && arrQuestions.length > 0">
+                v-if="arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0 && arrQuestions.length > 0  && !formHasBeenFilled">
                 Submit
             </button>
             <div class="clear"></div>

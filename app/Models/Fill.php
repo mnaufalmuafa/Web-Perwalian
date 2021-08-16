@@ -25,4 +25,15 @@ class Fill extends Model
         $fill->semester = $data["semester"];
         $fill->save();
     }
+
+    public static function checkFillExist($lecturer_id, $form_id, $class_id, $school_year_id, $semester)
+    {
+        $qr = Fill::where('lecturer_id', $lecturer_id)
+                    ->where('form_id', $form_id)
+                    ->where('class_id', $class_id)
+                    ->where('school_year_id', $school_year_id)
+                    ->where('semester', $semester)
+                    ->count();
+        return response()->json($qr > 0);
+    }
 }

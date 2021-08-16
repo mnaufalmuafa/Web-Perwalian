@@ -66,4 +66,15 @@ class FillController extends Controller
 
         return redirect()->route('beranda-dosen');
     }
+
+    public function checkFillExist(Request $request)
+    {
+        return Fill::checkFillExist(
+            $request->lecturer_id,
+            $request->form_id,
+            $request->class_id, 
+            $request->school_year_id,
+            $request->semester
+        );
+    }
 }
