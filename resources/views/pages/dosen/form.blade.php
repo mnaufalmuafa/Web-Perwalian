@@ -111,6 +111,13 @@
                 @{{ | formHasBeenFilledText }}
             </p>
 
+            <section id="sectionPresenceAll">
+                <p>Hadirkan semua</p>
+                <div class="toggleWrapper" id="togglePresenceAll">
+                    <div class="circleToggle"></div>
+                </div>
+            </section>
+
             <table cellspacing="0" v-if="arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0 && !formHasBeenFilled">
                 <thead>
                     <tr>
@@ -130,7 +137,7 @@
                             <input type="radio" :name="'presence'+student.nim" value="Hadir" required>
                             <label>Hadir</label>
                             <br>
-                            <input type="radio" :name="'presence'+student.nim" value="Tidak Hadir">
+                            <input type="radio" :name="'presence'+student.nim" value="Tidak Hadir" @click="unableToggle">
                             <label>Tidak Hadir</label>
                         </td>
                         <td><input type="text" :name="'keterangan'+student.nim" value=""></td>

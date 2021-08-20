@@ -23,6 +23,7 @@ var form = new Vue({
         arrQuestions : [],
         isNoFormAvailable : false,
         formHasBeenFilled : false,
+        togglePresenceAllActive : false,
     },
     created : function() {
         window.addEventListener("pageshow", this.onpageshow);
@@ -58,6 +59,38 @@ var form = new Vue({
             var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
             if ( historyTraversal ) {
                 window.location.reload();
+            }
+        },
+        setupToggle : function() {
+            const togglePresenceAll = document.getElementById("togglePresenceAll");
+            let localArrStudent = this.arrStudent;
+            togglePresenceAll.addEventListener("click", function(){
+                const circleToggle = document.getElementsByClassName("circleToggle")[0];
+                circleToggle.classList.toggle("togglePresenceMoved");
+                if (circleToggle.classList.contains("togglePresenceMoved")) { // jika toggle aktif
+                    this.togglePresenceAllActive = true;
+                    togglePresenceAll.style.backgroundColor = "#668cff";
+                    if (localArrStudent != null && localArrStudent.length > 0) {
+                        for (const student of localArrStudent) {
+                            const elName = "presence"+student.nim;
+                            const rb = document.getElementsByName(elName)[0];
+                            rb.checked = true;
+                        }
+                    }
+                }
+                else { // jika toggle tidak aktif
+                    this.togglePresenceAllActive = false;
+                    togglePresenceAll.style.backgroundColor = "#ccc";
+                }
+            });
+        },
+        unableToggle : function() {
+            const circleToggle = document.getElementsByClassName("circleToggle")[0];
+            if (circleToggle.classList.contains("togglePresenceMoved")) { // jika toggle aktif
+                const circleToggle = document.getElementsByClassName("circleToggle")[0];
+                circleToggle.classList.toggle("togglePresenceMoved");
+                this.togglePresenceAllActive = false;
+                togglePresenceAll.style.backgroundColor = "#ccc";
             }
         },
         assignDataFromURL : function() {
@@ -133,7 +166,8 @@ var form = new Vue({
             fetch("/api/get/mahasiswa/for_form_page?class_id="+this.selectedClassId)
                 .then(response => response.json())
                 .then(data => this.arrStudent = data)
-                .then(this.fetchClassGeneration);
+                .then(this.fetchClassGeneration)
+                .then(this.setupToggle);
         },
         fetchClassGeneration: function() {
             fetch("/api/get/kelas/get_generation_id?class_id="+this.selectedClassId)
