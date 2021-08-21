@@ -111,7 +111,7 @@
                 @{{ | formHasBeenFilledText }}
             </p>
 
-            <section id="sectionPresenceAll">
+            <section id="sectionPresenceAll" v-if="arrStudent !== null && arrStudent.length > 0 && selectedClassGenerationId !== 0 && !formHasBeenFilled">
                 <p>Hadirkan semua</p>
                 <div class="toggleWrapper" id="togglePresenceAll">
                     <div class="circleToggle"></div>
