@@ -17,8 +17,10 @@ h1 {
 }
 
 h2 {
-    text-align: center;
-    margin-top: 0px;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 0px;
 }
 
 a {
@@ -69,26 +71,74 @@ a {
     margin-left: 100px;
 }
 
-/* #firstSection article:first-child main {
-    background-color: red;
+#filterTitle {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
 }
 
-#firstSection article:first-child footer {
-    background-color: #960303;
+#filterSection {
+    width: max-content;
+    margin-left: 20px;
 }
 
-#firstSection article:nth-child(2) main {
-    background-color: #00FF85;
+#tableContainer {
+    overflow-x: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
-#firstSection article:nth-child(2) footer {
-    background-color: #005C30;
+#tableContainer h2 {
+    margin-left: 20px;
+    margin-bottom: 0px;
+    text-align: left;
 }
 
-#firstSection article:nth-child(3) main {
-    background-color: #0029FF;
+table {
+    width: 100%;
+    margin: 10px 20px 0px 20px;
 }
 
-#firstSection article:nth-child(3) footer {
-    background-color: #001271;
-} */
+td {
+    text-align: center;
+}
+
+td:nth-child(6) {
+    text-align: left;
+}
+
+table a {
+    color: inherit;
+}
+
+.formSection {
+    display: flex;
+}
+
+form section section:nth-child(1) {
+    width: 110px;
+}
+
+.formSection:not(:nth-child(1)) {
+    margin-top: 10px;
+}
+
+.formSection > section:nth-child(2) {
+    margin-left: 20px;
+}
+
+form section > p {
+    margin: 0px;
+}
+
+#sortingSection {
+    display: flex;
+    justify-content: flex-end;
+    text-align: end;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+#sortingSection label {
+    margin-right: 5px;
+}
