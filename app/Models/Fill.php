@@ -36,4 +36,15 @@ class Fill extends Model
                     ->count();
         return response()->json($qr > 0);
     }
+
+    public static function getStatus($lecturer_id, $form_id, $class_id, $sy_id, $semester)
+    {
+        $qr = Fill::where('lecturer_id', $lecturer_id)
+                    ->where('form_id', $form_id)
+                    ->where('class_id', $class_id)
+                    ->where('school_year_id', $sy_id)
+                    ->where('semester', $semester)
+                    ->count();
+        return $qr > 0 ? "Sudah Mengisi" : "Belum Mengisi";
+    }
 }

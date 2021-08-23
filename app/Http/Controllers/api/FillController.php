@@ -7,10 +7,15 @@ use App\Models\AnswerQuestion;
 use App\Models\AnswerText;
 use App\Models\AnswerUploadFile;
 use App\Models\Attedance;
+use App\Models\Dosen;
 use App\Models\Fill;
+use App\Models\Form;
 use App\Models\FormAnswer;
+use App\Models\Kelas;
 use App\Models\Mahasiswa;
+use App\Models\SchoolYear;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FillController extends Controller
 {
@@ -76,5 +81,43 @@ class FillController extends Controller
             $request->school_year_id,
             $request->semester
         );
+    }
+
+    public function getRekap()
+    {
+        $ta = SchoolYear::select('id')->get();
+        foreach($ta as $sy) {
+            $sy->school_year = SchoolYear::getFormattedTahunAjaran($sy->id);
+        }
+        $lecturers = Dosen::select('id', 'lecturer_code')->where('is_deleted', 0)->get();
+        $semesters = array('Ganjil', 'Genap');
+        $forms = Form::get();
+        $fills = [];
+        foreach ($ta as $sy) {
+            foreach($semesters as $semester) {
+                foreach($forms as $form) {
+                    foreach($lecturers as $lecturer) {
+                        $lecturerClass = Kelas::where('homeroom_id', $lecturer->id)->where('is_deleted', 0)->get();
+                        foreach($lecturerClass as $class) {
+                            array_push($fills, [
+                                "school_year" => $sy->school_year,
+                                "semester" => $semester,
+                                "lecturer_id" => $lecturer->id,
+                                "lecturer_code" => $lecturer->lecturer_code,
+                                "form_id" => $form->id,
+                                "class_id" => $class->id,
+                                "class_name" => $class->name,
+                                "status" => Fill::getStatus($lecturer->id, $form->id, $class->id, $sy->id, $semester),
+                            ]);
+                        }
+                    }
+                }
+            }
+        }
+        // foreach ($fills as $fill ) {
+        //     $fill->tahun_ajaran = SchoolYear::getFormattedTahunAjaran($fill->school_year_id);
+        //     $fill->kode_dosen = Dosen::getDosenCodeById($fill->id);
+        // }
+        return $fills;
     }
 }
