@@ -99,10 +99,10 @@
                             <p>Status</p>
                         </section>
                         <section>
-                            <input type="checkbox" name="" id="alreadyFill">
+                            <input type="checkbox" name="" id="alreadyFill" @click="addStatusFilter('Sudah Mengisi')">
                             <label for="alreadyFill">Sudah Mengisi</label>
                             <br>
-                            <input type="checkbox" name="" id="notYetFill">
+                            <input type="checkbox" name="" id="notYetFill" @click="addStatusFilter('Belum Mengisi')">
                             <label for="notYetFill">Belum Mengisi</label>
                         </section>
                     </section>
@@ -135,7 +135,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(fill, index) in fills" v-if="(selectedTahunAjaran.length == 0 || selectedTahunAjaran.includes(fill.school_year_id)) && (selectedSemester.length == 0 || selectedSemester.includes(fill.semester)) && (selectedFormId.length == 0 || selectedFormId.includes(fill.form_id))">
+                    <tr v-for="(fill, index) in fills" v-if="(selectedTahunAjaran.length == 0 || selectedTahunAjaran.includes(fill.school_year_id)) && (selectedSemester.length == 0 || selectedSemester.includes(fill.semester)) && (selectedFormId.length == 0 || selectedFormId.includes(fill.form_id)) && (selectedStatus.length == 0 || selectedStatus.includes(fill.status))">
                         <td>@{{ fill.school_year }}</td>
                         <td>@{{ fill.semester }}</td>
                         <td>@{{ fill.form_id | formName }}</td>

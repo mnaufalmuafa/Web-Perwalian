@@ -9,6 +9,7 @@ var dashboard = new Vue({
         selectedTahunAjaran : [],
         selectedSemester : [],
         selectedFormId : [],
+        selectedStatus : [],
     },
     created : function() {
         window.addEventListener("pageshow", this.onpageshow);
@@ -72,6 +73,14 @@ var dashboard = new Vue({
             }
             else {
                 this.selectedFormId.push(form_id);
+            }
+        },
+        addStatusFilter : function(status) {
+            if (this.selectedStatus.includes(status)) {
+                this.selectedStatus.splice(this.selectedStatus.indexOf(status), 1);
+            }
+            else {
+                this.selectedStatus.push(status);
             }
         },
     }
