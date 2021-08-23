@@ -9,6 +9,11 @@ var dashboard = new Vue({
     created : function() {
         window.addEventListener("pageshow", this.onpageshow);
     },
+    filters : {
+        formName : function(id){
+            return "Form "+id;
+        },
+    },
     mounted : function mounted() {
         fetch("/api/get/dosen/count")
             .then(response => response.json())

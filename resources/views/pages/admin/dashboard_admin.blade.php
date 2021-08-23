@@ -125,7 +125,7 @@
                     <tr v-for="(fill, index) in fills">
                         <td>@{{ fill.school_year }}</td>
                         <td>@{{ fill.semester }}</td>
-                        <td>@{{ fill.form_id }}</td>
+                        <td>@{{ fill.form_id | formName }}</td>
                         <td>@{{ fill.lecturer_code }}</td>
                         <td>@{{ fill.status }}</td>
                         <td>@{{ fill.class_name }}</td>
