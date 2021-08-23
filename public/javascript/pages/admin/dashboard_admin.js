@@ -7,6 +7,7 @@ var dashboard = new Vue({
         fills : null,
         tahunAjaran : null,
         selectedTahunAjaran : [],
+        selectedSemester : [],
     },
     created : function() {
         window.addEventListener("pageshow", this.onpageshow);
@@ -55,6 +56,14 @@ var dashboard = new Vue({
             else {
                 this.selectedTahunAjaran.push(id);
             }
-        }
+        },
+        addSemesterFilter : function(semester) {
+            if (this.selectedSemester.includes(semester)) {
+                this.selectedSemester.splice(this.selectedSemester.indexOf(semester), 1);
+            }
+            else {
+                this.selectedSemester.push(semester);
+            }
+        },
     }
 });

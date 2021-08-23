@@ -70,10 +70,10 @@
                             <p>Semester</p>
                         </section>
                         <section>
-                            <input type="checkbox" name="" id="ganjilOpt">
+                            <input type="checkbox" name="" id="ganjilOpt" @click="addSemesterFilter('Ganjil')">
                             <label for="ganjilOpt">Ganjil</label>
                             <br>
-                            <input type="checkbox" name="" id="genapOpt">
+                            <input type="checkbox" name="" id="genapOpt" @click="addSemesterFilter('Genap')">
                             <label for="genapOpt">Genap</label>
                         </section>
                     </section>
@@ -135,7 +135,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(fill, index) in fills" v-if="(selectedTahunAjaran.length == 0 || selectedTahunAjaran.includes(fill.school_year_id))">
+                    <tr v-for="(fill, index) in fills" v-if="(selectedTahunAjaran.length == 0 || selectedTahunAjaran.includes(fill.school_year_id)) && (selectedSemester.length == 0 || selectedSemester.includes(fill.semester))">
                         <td>@{{ fill.school_year }}</td>
                         <td>@{{ fill.semester }}</td>
                         <td>@{{ fill.form_id | formName }}</td>
