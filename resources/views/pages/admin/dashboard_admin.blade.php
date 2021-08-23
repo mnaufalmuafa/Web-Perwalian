@@ -113,6 +113,7 @@
                     <tr>
                         <th>Tahun Ajaran</th>
                         <th>Semester</th>
+                        <th>Form</th>
                         <th>Kode Dosen</th>
                         <th>Status</th>
                         <th>Kelas</th>
@@ -124,6 +125,7 @@
                     <tr>
                         <td>2020/2021</td>
                         <td>Genap</td>
+                        <td>Form 1</td>
                         <td>ASD</td>
                         <td>Belum Mengisi</td>
                         <td>IFX-43-INT</td>
@@ -133,6 +135,7 @@
                     <tr>
                         <td>2020/2021</td>
                         <td>Genap</td>
+                        <td>Form 2</td>
                         <td>SDF</td>
                         <td>Sudah Mengisi</td>
                         <td>IFX-43-INT</td>
