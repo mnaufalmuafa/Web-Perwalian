@@ -83,13 +83,13 @@
                             <p>Form</p>
                         </section>
                         <section>
-                            <input type="checkbox" name="" id="form1">
+                            <input type="checkbox" name="" id="form1" @click="addFormIdFilter(1)">
                             <label for="form1">Form 1</label>
                             <br>
-                            <input type="checkbox" name="" id="form2">
+                            <input type="checkbox" name="" id="form2" @click="addFormIdFilter(2)">
                             <label for="form2">Form 2</label>
                             <br>
-                            <input type="checkbox" name="" id="form3">
+                            <input type="checkbox" name="" id="form3" @click="addFormIdFilter(3)">
                             <label for="form3">Form 3</label>
                         </section>
                     </section>
@@ -135,7 +135,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(fill, index) in fills" v-if="(selectedTahunAjaran.length == 0 || selectedTahunAjaran.includes(fill.school_year_id)) && (selectedSemester.length == 0 || selectedSemester.includes(fill.semester))">
+                    <tr v-for="(fill, index) in fills" v-if="(selectedTahunAjaran.length == 0 || selectedTahunAjaran.includes(fill.school_year_id)) && (selectedSemester.length == 0 || selectedSemester.includes(fill.semester)) && (selectedFormId.length == 0 || selectedFormId.includes(fill.form_id))">
                         <td>@{{ fill.school_year }}</td>
                         <td>@{{ fill.semester }}</td>
                         <td>@{{ fill.form_id | formName }}</td>
