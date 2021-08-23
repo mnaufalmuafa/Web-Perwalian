@@ -83,14 +83,30 @@
 
                     <section class="formSection">
                         <section>
+                            <p>Form</p>
+                        </section>
+                        <section>
+                            <input type="checkbox" name="" id="form1">
+                            <label for="form1">Form 1</label>
+                            <br>
+                            <input type="checkbox" name="" id="form2">
+                            <label for="form2">Form 2</label>
+                            <br>
+                            <input type="checkbox" name="" id="form3">
+                            <label for="form3">Form 3</label>
+                        </section>
+                    </section>
+
+                    <section class="formSection">
+                        <section>
                             <p>Status</p>
                         </section>
                         <section>
-                            <input type="checkbox" name="" id="ganjilOpt">
-                            <label for="ganjilOpt">Sudah Mengisi</label>
+                            <input type="checkbox" name="" id="alreadyFill">
+                            <label for="alreadyFill">Sudah Mengisi</label>
                             <br>
-                            <input type="checkbox" name="" id="genapOpt">
-                            <label for="genapOpt">Belum Mengisi</label>
+                            <input type="checkbox" name="" id="notYetFill">
+                            <label for="notYetFill">Belum Mengisi</label>
                         </section>
                     </section>
                 </form>
