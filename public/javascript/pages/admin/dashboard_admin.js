@@ -5,6 +5,8 @@ var dashboard = new Vue({
         kelasCount : null,
         mahasiswaCount : null,
         fills : null,
+        tahunAjaran : null,
+        selectedTahunAjaran : [],
     },
     created : function() {
         window.addEventListener("pageshow", this.onpageshow);
@@ -27,6 +29,10 @@ var dashboard = new Vue({
             .then(response => response.json())
             .then(data => this.mahasiswaCount = data);
 
+        fetch("/api/get/school_year/for_dashboard_admin")
+            .then(response => response.json())
+            .then(data => this.tahunAjaran = data);
+
         fetch("/api/get/fill/rekap")
             .then(response => response.json())
             .then(data => this.fills = data);
@@ -42,5 +48,13 @@ var dashboard = new Vue({
                 window.location.reload();
             }
         },
+        addTaFilter : function(id) {
+            if (this.selectedTahunAjaran.includes(id)) {
+                this.selectedTahunAjaran.splice(this.selectedTahunAjaran.indexOf(id), 1);
+            }
+            else {
+                this.selectedTahunAjaran.push(id);
+            }
+        }
     }
 });

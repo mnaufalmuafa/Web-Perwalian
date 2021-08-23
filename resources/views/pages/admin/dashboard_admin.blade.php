@@ -57,14 +57,11 @@
                             <p>Tahun Ajaran</p>
                         </section>
                         <section>
-                            <input type="checkbox" name="" id="ta1">
-                            <label for="ta1">2020/2021</label>
-                            <br>
-                            <input type="checkbox" name="" id="ta2">
-                            <label for="ta2">2021/2022</label>
-                            <br>
-                            <input type="checkbox" name="" id="ta3">
-                            <label for="ta3">2021/2022</label>
+                            <div v-for="(ta, i) in tahunAjaran">
+                                <input type="checkbox" name="" :id="'ta'+i" @click="addTaFilter(ta.id)">
+                                <label for="'ta'+i">@{{ ta.tahun_ajaran }}</label>
+                                <br>
+                            </div>
                         </section>
                     </section>
 
@@ -138,7 +135,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(fill, index) in fills">
+                    <tr v-for="(fill, index) in fills" v-if="(selectedTahunAjaran.length == 0 || selectedTahunAjaran.includes(fill.school_year_id))">
                         <td>@{{ fill.school_year }}</td>
                         <td>@{{ fill.semester }}</td>
                         <td>@{{ fill.form_id | formName }}</td>

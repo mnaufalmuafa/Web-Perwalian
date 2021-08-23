@@ -112,6 +112,7 @@ class FillController extends Controller
                             }
                             
                             array_push($fills, [
+                                "school_year_id" => $sy->id,
                                 "school_year" => $sy->school_year,
                                 "semester" => $semester,
                                 "lecturer_id" => $lecturer->id,

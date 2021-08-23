@@ -12,4 +12,9 @@ class SchoolYearController extends Controller
     {
         return SchoolYear::get();
     }
+
+    public function getSchoolYearForDashboardAdmin()
+    {
+        return SchoolYear::getSchoolYearForDashboardAdmin();
+    }
 }

@@ -18,4 +18,13 @@ class SchoolYear extends Model
         $ta = SchoolYear::select('first_year', 'second_year')->where('id', $id)->first();
         return $ta->first_year."/".$ta->second_year;
     }
+
+    public static function getSchoolYearForDashboardAdmin()
+    {
+        $sy = SchoolYear::select('id')->get();
+        foreach($sy as $ta) {
+            $ta->tahun_ajaran = SchoolYear::getFormattedTahunAjaran($ta->id);
+        }
+        return $sy;
+    }
 }
