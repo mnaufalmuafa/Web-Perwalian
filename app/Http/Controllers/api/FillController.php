@@ -14,6 +14,7 @@ use App\Models\FormAnswer;
 use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\SchoolYear;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -105,6 +106,8 @@ class FillController extends Controller
                             if ($status == "Sudah Mengisi") {
                                 $id = Fill::getIdByParam($lecturer->id, $form->id, $class->id, $sy->id, $semester);
                                 $created_at = Fill::getCreatedAtById($id);
+                                $dt = Carbon::parse($created_at);
+                                $created_at = $dt->day."-".$dt->month."-".$dt->year." ".$dt->hour.":".$dt->minute;
                                 $downloadURL = Fill::getDownloadURL($id);
                             }
                             
@@ -125,10 +128,6 @@ class FillController extends Controller
                 }
             }
         }
-        // foreach ($fills as $fill ) {
-        //     $fill->tahun_ajaran = SchoolYear::getFormattedTahunAjaran($fill->school_year_id);
-        //     $fill->kode_dosen = Dosen::getDosenCodeById($fill->id);
-        // }
         return $fills;
     }
 }
