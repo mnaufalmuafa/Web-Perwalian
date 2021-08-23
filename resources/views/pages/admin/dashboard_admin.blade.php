@@ -122,23 +122,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>2020/2021</td>
-                        <td>Genap</td>
-                        <td>Form 1</td>
-                        <td>ASD</td>
-                        <td>Belum Mengisi</td>
-                        <td>IFX-43-INT</td>
-                        <td><a href="#">https://mail.google.com/mail/u/0/#inbox/FfghMfcgzGkZsxGkjJCgNCFEBEDFNfdgsdSAPpCpLKSlqbkMV</a></td>
-                        <td>23-09-2021 04:32</td>
-                    </tr>
-                    <tr>
-                        <td>2020/2021</td>
-                        <td>Genap</td>
-                        <td>Form 2</td>
-                        <td>SDF</td>
-                        <td>Sudah Mengisi</td>
-                        <td>IFX-43-INT</td>
+                    <tr v-for="(fill, index) in fills">
+                        <td>@{{ fill.school_year }}</td>
+                        <td>@{{ fill.semester }}</td>
+                        <td>@{{ fill.form_id }}</td>
+                        <td>@{{ fill.lecturer_code }}</td>
+                        <td>@{{ fill.status }}</td>
+                        <td>@{{ fill.class_name }}</td>
                         <td><a href="#">https://mail.google.com/mail/u/0/#inbox/FfghMfcgzGkZsxGkjJCgNCFEBEDFNfdgsdSAPpCpLKSlqbkMV</a></td>
                         <td>23-09-2021 04:32</td>
                     </tr>
