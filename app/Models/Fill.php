@@ -47,4 +47,19 @@ class Fill extends Model
                     ->count();
         return $qr > 0 ? "Sudah Mengisi" : "Belum Mengisi";
     }
+
+    public static function getIdByParam($lecturer_id, $form_id, $class_id, $sy_id, $semester)
+    {
+        return Fill::where('lecturer_id', $lecturer_id)
+                    ->where('form_id', $form_id)
+                    ->where('class_id', $class_id)
+                    ->where('school_year_id', $sy_id)
+                    ->where('semester', $semester)
+                    ->pluck('id')[0];
+    }
+
+    public static function getCreatedAtById($id)
+    {
+        return Fill::where('id', $id)->pluck('created_at')[0];
+    }
 }

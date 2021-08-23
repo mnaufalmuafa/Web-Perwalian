@@ -99,6 +99,12 @@ class FillController extends Controller
                     foreach($lecturers as $lecturer) {
                         $lecturerClass = Kelas::where('homeroom_id', $lecturer->id)->where('is_deleted', 0)->get();
                         foreach($lecturerClass as $class) {
+                            $status = Fill::getStatus($lecturer->id, $form->id, $class->id, $sy->id, $semester);
+                            $created_at = null;
+                            if ($status == "Sudah Mengisi") {
+                                $id = Fill::getIdByParam($lecturer->id, $form->id, $class->id, $sy->id, $semester);
+                                $created_at = Fill::getCreatedAtById($id);
+                            }
                             array_push($fills, [
                                 "school_year" => $sy->school_year,
                                 "semester" => $semester,
@@ -108,6 +114,7 @@ class FillController extends Controller
                                 "class_id" => $class->id,
                                 "class_name" => $class->name,
                                 "status" => Fill::getStatus($lecturer->id, $form->id, $class->id, $sy->id, $semester),
+                                "created_at" => $created_at,
                             ]);
                         }
                     }

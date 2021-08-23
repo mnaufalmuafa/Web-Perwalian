@@ -130,7 +130,7 @@
                         <td>@{{ fill.status }}</td>
                         <td>@{{ fill.class_name }}</td>
                         <td><a href="#">https://mail.google.com/mail/u/0/#inbox/FfghMfcgzGkZsxGkjJCgNCFEBEDFNfdgsdSAPpCpLKSlqbkMV</a></td>
-                        <td>23-09-2021 04:32</td>
+                        <td>@{{ fill.created_at }}</td>
                     </tr>
                 </tbody>
             </table>

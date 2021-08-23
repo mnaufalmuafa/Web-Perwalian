@@ -142,3 +142,7 @@ form section > p {
 #sortingSection label {
     margin-right: 5px;
 }
+
+table {
+    width: max-content;
+}
