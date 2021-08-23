@@ -129,7 +129,7 @@
                         <td>@{{ fill.lecturer_code }}</td>
                         <td>@{{ fill.status }}</td>
                         <td>@{{ fill.class_name }}</td>
-                        <td><a href="#">https://mail.google.com/mail/u/0/#inbox/FfghMfcgzGkZsxGkjJCgNCFEBEDFNfdgsdSAPpCpLKSlqbkMV</a></td>
+                        <td><a :href="fill.download_url" target="_blank">@{{ fill.download_url }}</a></td>
                         <td>@{{ fill.created_at }}</td>
                     </tr>
                 </tbody>

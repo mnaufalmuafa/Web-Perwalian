@@ -101,10 +101,13 @@ class FillController extends Controller
                         foreach($lecturerClass as $class) {
                             $status = Fill::getStatus($lecturer->id, $form->id, $class->id, $sy->id, $semester);
                             $created_at = null;
+                            $downloadURL = null;
                             if ($status == "Sudah Mengisi") {
                                 $id = Fill::getIdByParam($lecturer->id, $form->id, $class->id, $sy->id, $semester);
                                 $created_at = Fill::getCreatedAtById($id);
+                                $downloadURL = Fill::getDownloadURL($id);
                             }
+                            
                             array_push($fills, [
                                 "school_year" => $sy->school_year,
                                 "semester" => $semester,
@@ -114,6 +117,7 @@ class FillController extends Controller
                                 "class_id" => $class->id,
                                 "class_name" => $class->name,
                                 "status" => Fill::getStatus($lecturer->id, $form->id, $class->id, $sy->id, $semester),
+                                "download_url" => $downloadURL,
                                 "created_at" => $created_at,
                             ]);
                         }
