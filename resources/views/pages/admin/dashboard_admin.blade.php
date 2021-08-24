@@ -110,7 +110,7 @@
             </section>
         </section>
 
-        <section id="sortingSection">
+        <!-- <section id="sortingSection">
             <label for="">Urutkan berdasarkan : </label>
             <select>
                 <option>-- Pilih metode pengurutan --</option>
@@ -118,7 +118,7 @@
                 <option value="">Semester</option>
                 <option value="">Status</option>
             </select>
-        </section>
+        </section> -->
 
         <section id="tableContainer">
             <table cellspacing="0">
