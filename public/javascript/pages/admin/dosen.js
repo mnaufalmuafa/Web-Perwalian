@@ -71,7 +71,7 @@ var dosenPage = new Vue({
             for (let i = 0; i < this.dataKodeDosen.length; i++) {
                 this.dataKelas.push([]);
                 for (let j = 0; j < data.length; j++) {
-                    if (data[j].lecturer_code == this.dataKodeDosen[i]) {
+                    if (data[j].lecturer_code == this.dataKodeDosen[i] && !data[j].is_deleted_class) {
                         this.dataKelas[i].push(data[j].name);
                     }
                 }

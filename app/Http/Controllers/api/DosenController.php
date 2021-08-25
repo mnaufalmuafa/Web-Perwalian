@@ -23,7 +23,13 @@ class DosenController extends Controller
         return Dosen::
                     orderBy('lecturer.lecturer_code', 'asc')
                     ->leftJoin('class', 'class.homeroom_id', '=', 'lecturer.id')
-                    ->select('lecturer.id', 'lecturer.lecturer_code', 'lecturer.is_deleted', 'class.name')
+                    ->select(
+                        'lecturer.id', 
+                        'lecturer.lecturer_code', 
+                        'lecturer.is_deleted', 
+                        'class.name', 
+                        'class.is_deleted as is_deleted_class'
+                    )
                     ->get();
     }
 
