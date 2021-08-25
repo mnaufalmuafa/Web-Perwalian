@@ -85,7 +85,7 @@ class KelasController extends Controller
 
     public function getKelasByLecturerId(Request $request)
     {
-        return Kelas::where('homeroom_id', $request->homeroom_id)->get();
+        return Kelas::where('homeroom_id', $request->homeroom_id)->where('is_deleted', 0)->get();
     }
 
     public function getGenerationId(Request $request)
