@@ -29,6 +29,11 @@ class Fill extends Model
 
     public static function getDownloadURL($fillId)
     {
+        return "http://127.0.0.1:8000/api/get/download?fill=".$fillId;
+    }
+
+    public static function getRealDownloadURL($fillId)
+    {
         $formAnswerId = DB::table('form_answer')
                             ->join('fill', 'form_answer.id', '=', 'fill.id')
                             ->where('fill.id', $fillId)
@@ -41,8 +46,23 @@ class Fill extends Model
         $file = DB::table('answer_upload_file')
                     ->where('id', $aqId)
                     ->first();
-        return "http://127.0.0.1:8000/upload/bukti_perwalian/".$file->id."/".$file->file_name;
-        // return $file;
+        return "/upload/bukti_perwalian/".$file->id."/".$file->file_name;
+    }
+
+    public static function getAUFNameByFillId($fillId)
+    {
+        $formAnswerId = DB::table('form_answer')
+                            ->join('fill', 'form_answer.id', '=', 'fill.id')
+                            ->where('fill.id', $fillId)
+                            ->pluck('form_answer.id')[0];
+        $aqId = DB::table('form_answer')
+                    ->join('answer_question', 'form_answer.id', '=', 'answer_question.form_answer_id')
+                    ->where('form_answer.id', $formAnswerId)
+                    ->where('answer_question.question_type_id', 3)
+                    ->pluck('answer_question.id as answer_question_id')[0];
+        return DB::table('answer_upload_file')
+                    ->where('id', $aqId)
+                    ->pluck('file_name')[0];
     }
 
     public static function checkFillExist($lecturer_id, $form_id, $class_id, $school_year_id, $semester)
