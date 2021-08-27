@@ -29,10 +29,15 @@ class Fill extends Model
 
     public static function getDownloadURL($fillId)
     {
-        $aqId = DB::table('fill')
-                    ->join('form_answer', 'fill.form_answer_id', '=', 'form_answer.id')
-                    ->join('answer_question', 'form_answer.id', '=', 'answer_question.id')
-                    ->pluck('answer_question.id')[0];
+        $formAnswerId = DB::table('form_answer')
+                            ->join('fill', 'form_answer.id', '=', 'fill.id')
+                            ->where('fill.id', $fillId)
+                            ->pluck('form_answer.id')[0];
+        $aqId = DB::table('form_answer')
+                    ->join('answer_question', 'form_answer.id', '=', 'answer_question.form_answer_id')
+                    ->where('form_answer.id', $formAnswerId)
+                    ->where('answer_question.question_type_id', 3)
+                    ->pluck('answer_question.id as answer_question_id')[0];
         $file = DB::table('answer_upload_file')
                     ->where('id', $aqId)
                     ->first();

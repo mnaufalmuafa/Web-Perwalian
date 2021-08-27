@@ -88,6 +88,7 @@ Route::prefix('api')->group(function(){
             Route::get('check_fill_exist', [App\Http\Controllers\api\FillController::class, "checkFillExist"]);
             Route::get('rekap', [App\Http\Controllers\api\FillController::class, "getRekap"]);
         });
+        Route::get('/download');
     });
 
     Route::prefix('post')->group(function() {
