@@ -146,3 +146,16 @@ form section > p {
 table {
     width: max-content;
 }
+
+table a {
+    color: blue !important;
+}
+
+th, td {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+td:nth-child(6) {
+    text-align: center;
+}
