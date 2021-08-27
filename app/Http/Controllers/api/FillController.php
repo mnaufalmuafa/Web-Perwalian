@@ -107,7 +107,15 @@ class FillController extends Controller
                                 $id = Fill::getIdByParam($lecturer->id, $form->id, $class->id, $sy->id, $semester);
                                 $created_at = Fill::getCreatedAtById($id);
                                 $dt = Carbon::parse($created_at);
-                                $created_at = $dt->day."-".$dt->month."-".$dt->year." ".$dt->hour.":".$dt->minute;
+                                $hour = $dt->hour;
+                                $minute = $dt->minute;
+                                if ($hour < 10) {
+                                    $hour = "0".$hour;
+                                }
+                                if ($minute < 10) {
+                                    $minute = "0".$minute;
+                                }
+                                $created_at = $dt->day."-".$dt->month."-".$dt->year." ".$hour.":".$minute;
                                 $downloadURL = Fill::getDownloadURL($id);
                             }
                             
